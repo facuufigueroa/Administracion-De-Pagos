@@ -376,6 +376,7 @@ public class ControladorEmpleado implements ActionListener {
                     JOptionPane.showMessageDialog(null, "SE HA CANCELADO LA OPERACION");   
                 } 
         }
+        
             
     }
                                                   
