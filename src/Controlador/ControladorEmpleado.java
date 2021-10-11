@@ -394,5 +394,5 @@ public class ControladorEmpleado implements ActionListener {
     }
    
    
-            
+                            
 }
