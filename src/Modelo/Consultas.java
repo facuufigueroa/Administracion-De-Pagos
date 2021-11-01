@@ -198,7 +198,7 @@ public class Consultas extends ConexionBD {
     public boolean guardarTurnos(Turnos turno) {
         PreparedStatement ps = null;
         Connection conn = getConnection();
-        String sql = "INSERT INTO turno (t1,t2,t3,t4,t5,t6,descuento,total,fecha,idempleado) VALUES(?,?,?,?,?,?,?,?,?,?) ";
+        String sql = "INSERT INTO turno (t1,t2,t3,t4,descuento,total,fecha,idempleado) VALUES(?,?,?,?,?,?,?,?) ";
 
         try {
             ps = conn.prepareStatement(sql);
@@ -206,12 +206,10 @@ public class Consultas extends ConexionBD {
             ps.setString(2, turno.getTurnoDos());
             ps.setString(3, turno.getTurnoTres());
             ps.setString(4, turno.getTurnoCuatro());
-            ps.setString(5, turno.getTurnoCinco());
-            ps.setString(6, turno.getTurnoSeis());
-            ps.setString(7, turno.getDescuento());
-            ps.setString(8, turno.getTotal());
-            ps.setString(9, turno.getFecha().toString());
-            ps.setString(10,turno.getIdempleado());
+            ps.setString(5, turno.getDescuento());
+            ps.setString(6, turno.getTotal());
+            ps.setString(7, turno.getFecha().toString());
+            ps.setString(8,turno.getIdempleado());
 
             ps.execute();
 
@@ -298,8 +296,9 @@ public class Consultas extends ConexionBD {
         } catch (Exception e) {
             System.out.println(e);
         }
-
+       ;
         return s;
+        
 
     }
 
@@ -585,8 +584,6 @@ public class Consultas extends ConexionBD {
                  t.setTurnoDos(rs.getString("t2"));
                  t.setTurnoTres(rs.getString("t3"));
                  t.setTurnoCuatro(rs.getString("t4"));
-                 t.setTurnoCinco(rs.getString("t5"));
-                 t.setTurnoSeis(rs.getString("t6"));
                  t.setDescuento(rs.getString("descuento"));
                  t.setTotal(rs.getString("total"));
                
@@ -646,7 +643,7 @@ public class Consultas extends ConexionBD {
         PreparedStatement ps = null;
         Connection con = getConnection();
         
-        String sql = "UPDATE turno SET t1 = ?, t2 = ? , t3 = ? , t4 = ?, t5 = ?, t6 = ?, descuento = ?, total = ? WHERE idturno = ?";
+        String sql = "UPDATE turno SET t1 = ?, t2 = ? , t3 = ? , t4 = ?, descuento = ?, total = ? WHERE idturno = ?";
 
         try {
             ps = con.prepareStatement(sql);
@@ -654,8 +651,6 @@ public class Consultas extends ConexionBD {
             ps.setString(2, turno.getTurnoDos());
             ps.setString(3, turno.getTurnoTres());
             ps.setString(4, turno.getTurnoCuatro());
-            ps.setString(5, turno.getTurnoCinco());
-            ps.setString(6, turno.getTurnoSeis());
             ps.setString(7, turno.getDescuento());
             ps.setString(8, turno.getTotal());
             ps.setString(9, turno.getIdturno());
