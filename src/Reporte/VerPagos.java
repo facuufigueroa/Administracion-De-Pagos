@@ -1,43 +1,33 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Reporte;
 
 import Modelo.ConexionBD;
 import java.sql.Connection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.view.JasperViewer;
-import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
-
-/**
- *
- * @author Facundo
- */
-public class Reporte {
-   
-    
-    
+public class VerPagos {
     public void conexionReporte(){
         try {
             ConexionBD con = new ConexionBD();
             Connection conn = con.getConnection();
-            
+            HashMap parameters =new HashMap();
             JasperReport jasperMasterReport = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reporte/emp.jasper"));
            // JasperReport jasperSubReport = JasperCompileManager.compileReport("C:\\Users\\facuu\\JaspersoftWorkspace\\MTBRAGADO\\turnos.jasper");
             
-            
-            JasperPrint mostrarReporte = JasperFillManager.fillReport(jasperMasterReport,null, conn);
+            parameters.put(JRParameter.IS_IGNORE_PAGINATION, true); //Elimina paginacion
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(jasperMasterReport,parameters, conn);
             JasperViewer reporteMaster = new JasperViewer(mostrarReporte,false);
             reporteMaster.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             reporteMaster.setVisible(true);
@@ -48,10 +38,4 @@ public class Reporte {
             JOptionPane.showMessageDialog(null, ">>" + ex);
         }
     }
-        
-  
-    
 }
-
-
-

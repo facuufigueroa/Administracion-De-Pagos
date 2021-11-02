@@ -91,8 +91,6 @@ public class ControladorModificar implements ActionListener {
             
                 buscarM.txtt3.setText(traeCeroDesdeBD(turno.getTurnoTres())?turno.getTurnoTres():"");
                 buscarM.txtt4.setText(traeCeroDesdeBD(turno.getTurnoCuatro())?turno.getTurnoCuatro():"");
-                buscarM.txtt5.setText(traeCeroDesdeBD(turno.getTurnoCinco())?turno.getTurnoCinco():"");
-                buscarM.txtt6.setText(traeCeroDesdeBD(turno.getTurnoSeis())?turno.getTurnoSeis():"");
                 buscarM.cajaDescuento.setText(traeCeroDesdeBD(turno.getDescuento())?turno.getDescuento():"");
                 buscarM.txtTotal.setText(traeCeroDesdeBD(turno.getTotal())?turno.getTotal():"");
                 buscarM.txtfecha.setText(fecha);
@@ -136,8 +134,6 @@ public class ControladorModificar implements ActionListener {
             turno.setTurnoDos(isCero(buscarM.txtt2.getText())?buscarM.txtt2.getText():"0");
             turno.setTurnoTres(isCero(buscarM.txtt3.getText())?buscarM.txtt3.getText():"0");
             turno.setTurnoCuatro(isCero(buscarM.txtt4.getText())?buscarM.txtt4.getText():"0");
-            turno.setTurnoCinco(isCero(buscarM.txtt5.getText())?buscarM.txtt5.getText():"0");
-            turno.setTurnoSeis(isCero(buscarM.txtt6.getText())?buscarM.txtt6.getText():"0");
             turno.setDescuento(isCero(buscarM.cajaDescuento.getText())?buscarM.cajaDescuento.getText():"0");
             turno.setTotal(buscarM.txtTotal.getText());
             turno.setIdturno(id_turno());

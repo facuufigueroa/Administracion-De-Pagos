@@ -13,8 +13,6 @@
      turno.`fecha`,
      turno.`total`,
      turno.`descuento`,
-     turno.`t6`,
-     turno.`t5`,
      turno.`t4`,
      turno.`t3`,
      turno.`t2`,
@@ -41,12 +39,6 @@ WHERE
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="descuento" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="t6" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="t5" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="t4" class="java.lang.Integer">
@@ -108,42 +100,28 @@ WHERE
 				<text><![CDATA[T4]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="255" y="26" width="32" height="20" uuid="c4bff13c-9634-4a9d-bc36-b0d176d4e165"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[T5]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="300" y="26" width="32" height="20" uuid="e142f071-843b-4092-8dbb-80b0a4f5770c"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[T6]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="338" y="25" width="73" height="20" uuid="0fd83ad7-0013-4d35-bed1-b94f8c17fe26"/>
+				<reportElement x="256" y="25" width="73" height="20" uuid="0fd83ad7-0013-4d35-bed1-b94f8c17fe26"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Descuento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="421" y="26" width="55" height="20" uuid="f203efeb-1f98-4484-bfe6-5c962d9a5bc7"/>
+				<reportElement x="329" y="26" width="55" height="20" uuid="f203efeb-1f98-4484-bfe6-5c962d9a5bc7"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Subtotal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="338" y="7" width="54" height="20" uuid="0b51f283-5c98-4dbe-8d5d-f11f2f5d7497"/>
+				<reportElement x="256" y="7" width="54" height="20" uuid="0b51f283-5c98-4dbe-8d5d-f11f2f5d7497"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="418" y="8" width="55" height="20" uuid="560ec14a-aed0-4475-b3ff-b16ece043987"/>
+				<reportElement x="310" y="8" width="55" height="20" uuid="560ec14a-aed0-4475-b3ff-b16ece043987"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
@@ -157,7 +135,7 @@ WHERE
 				<text><![CDATA[Dia]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="26" width="477" height="1" uuid="f4d76f85-6191-4ccc-bc5d-a7cc43bdb33f"/>
+				<reportElement x="0" y="26" width="398" height="1" uuid="f4d76f85-6191-4ccc-bc5d-a7cc43bdb33f"/>
 			</line>
 			<line>
 				<reportElement x="59" y="27" width="1" height="19" uuid="0b8038c9-aa76-463a-af8a-33fe225756f3"/>
@@ -166,36 +144,19 @@ WHERE
 				<reportElement x="0" y="7" width="1" height="39" uuid="1f41a199-52bf-4a52-8a74-fa479383165a"/>
 			</line>
 			<line>
-				<reportElement x="1" y="45" width="476" height="1" uuid="fa973e86-934b-469f-be31-66cba643013b"/>
+				<reportElement x="1" y="45" width="398" height="1" uuid="fa973e86-934b-469f-be31-66cba643013b"/>
 			</line>
 			<line>
-				<reportElement x="476" y="8" width="1" height="37" uuid="c4187f32-89ec-4df7-a141-9cbb28f93e9c"/>
+				<reportElement x="398" y="8" width="1" height="37" uuid="c4187f32-89ec-4df7-a141-9cbb28f93e9c"/>
 			</line>
 			<line>
-				<reportElement x="1" y="7" width="476" height="1" uuid="561c6d1e-9d37-4f68-a498-795d102cd533"/>
+				<reportElement x="1" y="7" width="398" height="1" uuid="561c6d1e-9d37-4f68-a498-795d102cd533"/>
 			</line>
-			<staticText>
-				<reportElement x="66" y="8" width="83" height="20" uuid="72985218-e27e-451a-b12a-23e632ac4123"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Turno mañana]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="232" y="8" width="83" height="20" uuid="84413600-e2c3-4e37-90c6-ab8616c58f87"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Turno tarde]]></text>
-			</staticText>
 			<line>
 				<reportElement x="59" y="8" width="1" height="21" uuid="d62aff51-9c13-492a-a472-6ed2da7d96bc"/>
 			</line>
 			<line>
-				<reportElement x="194" y="8" width="1" height="37" uuid="e978dfe4-019a-47c3-98ed-3577f41a7e51"/>
-			</line>
-			<line>
-				<reportElement x="332" y="7" width="1" height="37" uuid="5a30d95d-f4af-45d0-b0f0-053492c19558"/>
+				<reportElement x="254" y="7" width="1" height="37" uuid="5a30d95d-f4af-45d0-b0f0-053492c19558"/>
 			</line>
 		</band>
 	</columnHeader>
@@ -230,21 +191,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{t4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="255" y="0" width="32" height="20" uuid="2aea2826-3df9-4112-b2f5-ea2a408c7c75"/>
-				<textElement>
-					<font fontName="Arial" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{t5}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="300" y="0" width="32" height="20" uuid="2d1bfb62-7f32-47fa-a0ca-0c491b9dc1d8"/>
-				<textElement>
-					<font fontName="Arial" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{t6}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="360" y="0" width="32" height="20" uuid="52a67d5e-3c71-4305-b37f-c775ee25becc"/>
+				<reportElement x="269" y="0" width="32" height="20" uuid="52a67d5e-3c71-4305-b37f-c775ee25becc"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
@@ -285,22 +232,8 @@ WHERE
 				</textElement>
 				<text><![CDATA[$]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="242" y="0" width="13" height="20" uuid="7f8a00c2-acc1-4a24-bc4b-761bad44c662"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[$]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="287" y="0" width="13" height="20" uuid="9cf928a8-f159-452e-ae17-144330750473"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[$]]></text>
-			</staticText>
 			<line>
-				<reportElement x="0" y="20" width="477" height="1" uuid="9acfd02e-bc97-4438-a830-c949233a7e8f"/>
+				<reportElement x="0" y="20" width="399" height="1" uuid="9acfd02e-bc97-4438-a830-c949233a7e8f"/>
 			</line>
 			<line>
 				<reportElement x="59" y="0" width="1" height="21" uuid="a607e4cb-012a-4c6e-9b62-399adf885fb1"/>
@@ -308,35 +241,32 @@ WHERE
 			<line>
 				<reportElement x="0" y="0" width="1" height="21" uuid="a1637fc1-0b3c-46e4-ac21-afef37ff0e50"/>
 			</line>
-			<line>
-				<reportElement x="476" y="0" width="1" height="21" uuid="fad2e376-e5c1-4c5f-a8ae-f45cfc977cce"/>
-			</line>
 			<staticText>
-				<reportElement x="405" y="0" width="13" height="19" uuid="03a0ce4e-d3a5-46b1-be3b-0c831b3ae5e7"/>
+				<reportElement x="316" y="0" width="13" height="19" uuid="03a0ce4e-d3a5-46b1-be3b-0c831b3ae5e7"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[$]]></text>
 			</staticText>
-			<line>
-				<reportElement x="194" y="0" width="1" height="20" uuid="6b9e82a0-6991-42a4-97a9-3f46041e4fc6"/>
-			</line>
 			<textField>
-				<reportElement x="418" y="1" width="55" height="20" uuid="cb763d05-01cb-4374-a025-5cc36d6fe866"/>
+				<reportElement x="329" y="1" width="55" height="20" uuid="cb763d05-01cb-4374-a025-5cc36d6fe866"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="345" y="0" width="13" height="20" uuid="0dbedb87-08cb-406e-bfa6-5d84489d552e"/>
+				<reportElement x="256" y="0" width="13" height="20" uuid="0dbedb87-08cb-406e-bfa6-5d84489d552e"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[$]]></text>
 			</staticText>
 			<line>
-				<reportElement x="332" y="1" width="1" height="20" uuid="6d9b09fb-ac48-4a41-8ecb-ffbc27f30aa6"/>
+				<reportElement x="255" y="0" width="1" height="20" uuid="6d9b09fb-ac48-4a41-8ecb-ffbc27f30aa6"/>
+			</line>
+			<line>
+				<reportElement x="398" y="0" width="1" height="21" uuid="fad2e376-e5c1-4c5f-a8ae-f45cfc977cce"/>
 			</line>
 		</band>
 	</detail>

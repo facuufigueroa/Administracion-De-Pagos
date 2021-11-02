@@ -7,6 +7,7 @@ package Reporte;
 
 import Modelo.ConexionBD;
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -17,6 +18,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.util.JRLoader;
 
 
@@ -36,7 +38,7 @@ public class Reporte {
             JasperReport jasperMasterReport = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reporte/emp.jasper"));
            // JasperReport jasperSubReport = JasperCompileManager.compileReport("C:\\Users\\facuu\\JaspersoftWorkspace\\MTBRAGADO\\turnos.jasper");
             
-            
+          
             JasperPrint mostrarReporte = JasperFillManager.fillReport(jasperMasterReport,null, conn);
             JasperViewer reporteMaster = new JasperViewer(mostrarReporte,false);
             reporteMaster.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

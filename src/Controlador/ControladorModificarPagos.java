@@ -47,8 +47,6 @@ public class ControladorModificarPagos implements ActionListener{
             modP.txtt2.setText(turno.getTurnoDos());
             modP.txtt3.setText(turno.getTurnoTres());
             modP.txtt4.setText(turno.getTurnoCuatro());
-            modP.txtt5.setText(turno.getTurnoCinco());
-            modP.txtt6.setText(turno.getTurnoSeis());
             modP.cajaDescuento.setText(turno.getDescuento());
             modP.txtTotal.setText(turno.getTotal());
             

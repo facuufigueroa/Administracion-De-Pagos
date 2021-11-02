@@ -28,6 +28,7 @@ public class GenerarImporte extends javax.swing.JFrame implements ActionListener
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/iconFrame.png")).getImage());
         setDefaultCloseOperation(DISPOSE_ON_CLOSE); //PARA CERRAR VENTANA Y NO TODA LA APLICACION
         setResizable(false);
+       
         
     }
 

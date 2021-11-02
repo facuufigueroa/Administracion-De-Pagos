@@ -8,6 +8,7 @@ import Reporte.Reporte;
 import Vista.BuscarModificar;
 import Vista.GenerarImporte;
 import Vista.ModificarPagos;
+import Vista.PagosEmpleado;
 import Vista.RegistrosEmpleados;
 import java.awt.Font;
 import java.awt.List;
@@ -55,9 +56,10 @@ public class ControladorEmpleado implements ActionListener {
         this.registrarE.btnModificarP.addActionListener(this);
         this.registrarE.btnNuevaSemana.addActionListener(this);
         this.registrarE.generarReporte.addActionListener(this);
+        this.registrarE.checkPrueba.addActionListener(this);
+      
         
       
-
         iniciarJTable();
 
     }
@@ -77,7 +79,7 @@ public class ControladorEmpleado implements ActionListener {
     public void iniciar() {
         registrarE.setTitle("EMPLEADO");
         registrarE.setLocationRelativeTo(null);
-        
+      
 
     }
 
@@ -90,8 +92,10 @@ public class ControladorEmpleado implements ActionListener {
         actualizar(e);
         editar(e);
         modificar(e);
-        abrirGenerarPago(e);
+        //abrirGenerarPago(e);
         abrirModificarPago(e);
+        abrirGenerarPagoPrueba(e);
+       
         try {
             nuevaSemana(e);
         } catch (SQLException ex) {
@@ -100,8 +104,9 @@ public class ControladorEmpleado implements ActionListener {
         reporte(e);
       
     }
-                                                
-
+     
+ 
+   
 
     public void limpiarCeldas() {
 
@@ -294,24 +299,61 @@ public class ControladorEmpleado implements ActionListener {
     
     
     
-    public void abrirGenerarPago(ActionEvent e) 
+   /* public void abrirGenerarPago(ActionEvent e) 
    {
         if (e.getSource() == registrarE.btnGenerarPago) {
             String idempleado=null;
             int fila = registrarE.getTablaEmpleado().getSelectedRow();
+            consulta.traerid_turno();
+            
 
             if (fila >= 0) {
                 idempleado = consulta.traer_id(registrarE.getTablaEmpleado().getValueAt(fila, 0).toString());
                 GenerarImporte generarImp = new GenerarImporte();
+                
                 Turnos turno = new Turnos();
-
+                
                 ControladorImporte controladorI = new ControladorImporte(consulta, generarImp, turno, idempleado);
                 controladorI.iniciar();
                 generarImp.setVisible(true);
-
+                
             }
         }
        
+    }*/
+    
+    public void abrirGenerarPagoPrueba(ActionEvent e){
+        if (e.getSource() == registrarE.btnGenerarPago) {
+            String idempleado=null;
+            int fila = registrarE.getTablaEmpleado().getSelectedRow();
+            //consulta.traerid_turno();
+            
+
+            if (fila >= 0) {
+                idempleado = consulta.traer_id(registrarE.getTablaEmpleado().getValueAt(fila, 0).toString());
+                PagosEmpleado pagosEmp = new PagosEmpleado();
+                
+                Turnos turno = new Turnos();
+                Turnos turnoLunes = new Turnos();
+                Turnos turnoMartes= new Turnos();
+                Turnos turnoMiercoles = new Turnos();
+                Turnos turnoJueves = new Turnos();
+                Turnos turnoViernes = new Turnos();
+                Turnos turnoSabado = new Turnos ();
+                Turnos turnoPremio = new Turnos ();
+                        
+                
+                ControladorImporte controladorI = new ControladorImporte(consulta, pagosEmp , turnoLunes ,turnoMartes, turnoMiercoles,
+                        turnoJueves,
+                        turnoViernes,
+                        turnoSabado,
+                        turnoPremio,
+                        idempleado);
+                controladorI.iniciar();
+                pagosEmp.setVisible(true);
+                
+            }
+        }
     }
     
     

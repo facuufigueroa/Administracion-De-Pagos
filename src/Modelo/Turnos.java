@@ -16,8 +16,6 @@ public class Turnos {
     private String turnoDos;
     private String turnoTres;
     private String turnoCuatro;
-    private String turnoCinco;
-    private String turnoSeis;
     private String descuento;
     private String total;
     private String idturno;
@@ -29,8 +27,6 @@ public class Turnos {
         this.turnoDos = turnoDos;
         this.turnoTres = turnoTres;
         this.turnoCuatro = turnoCuatro;
-        this.turnoCinco = turnoCinco;
-        this.turnoSeis = turnoSeis;
         this.descuento = descuento;
         this.total = total;
         this.idturno = idturno;
@@ -74,21 +70,6 @@ public class Turnos {
         this.turnoCuatro = turnoCuatro;
     }
 
-    public String getTurnoCinco() {
-        return turnoCinco;
-    }
-
-    public void setTurnoCinco(String turnoCinco) {
-        this.turnoCinco = turnoCinco;
-    }
-
-    public String getTurnoSeis() {
-        return turnoSeis;
-    }
-
-    public void setTurnoSeis(String turnoSeis) {
-        this.turnoSeis = turnoSeis;
-    }
 
     public String getDescuento() {
         return descuento;
