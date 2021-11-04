@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import com.toedter.calendar.JDateChooser;
 import java.sql.Date;
 
 /**
@@ -109,6 +110,14 @@ public class Turnos {
 
     public void setIdempleado(String idempleado) {
         this.idempleado = idempleado;
+    }
+
+    public void setFecha(JDateChooser fechaTurno) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setFecha(String fecha) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

@@ -5,6 +5,7 @@
  */
 package Vista;
 
+
 import Controlador.ControladorEmpleado;
 import Controlador.ControladorImporte;
 import Modelo.Consultas;
@@ -14,7 +15,9 @@ import Reporte.Reporte;
 import Reporte.VerPagos;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import static jdk.nashorn.internal.objects.ArrayBufferView.length;
 
 /**
  *
@@ -24,13 +27,16 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
   
     DefaultTableModel modelo = new DefaultTableModel();
     
+    
 
     
     public RegistrosEmpleados() {
         initComponents();
         iniciartabla();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/iconFrame.png")).getImage());
+        
         setResizable(false);
+        
     }
 
     
@@ -44,7 +50,6 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnEditar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        txtBuscar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -56,7 +61,7 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
         botonBorrar = new javax.swing.JButton();
         botonActualizar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        checkPrueba = new javax.swing.JCheckBox();
+        txtBuscarF = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaEmpleado = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -115,9 +120,6 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
         btnBuscar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscarUsuario.png"))); // NOI18N
         btnBuscar.setText("BUSCAR");
-
-        txtBuscar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txtBuscar.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102)));
 
         jLabel2.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,7 +184,12 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editarUsuario.png"))); // NOI18N
         btnModificar.setText("MODIFICAR");
 
-        checkPrueba.setText("jCheckBox1");
+        txtBuscarF.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        txtBuscarF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarFKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -196,9 +203,10 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)
+                                .addComponent(txtBuscarF, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2)
@@ -222,10 +230,7 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
                                         .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(20, 20, 20)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(checkPrueba)
-                                        .addGap(16, 16, 16)))))
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -234,15 +239,10 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(checkPrueba)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -256,8 +256,8 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBuscarF, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -436,10 +436,13 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
         if(!numeros){
             evt.consume();
         }
+        if(txtDni.getText().length() >= 8){
+            evt.consume();
+        }
     }//GEN-LAST:event_txtDniKeyTyped
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtDniActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -450,6 +453,18 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
             VerPagos verPagos = new VerPagos();
             verPagos.conexionReporte();
     }//GEN-LAST:event_btnVerPagosActionPerformed
+
+    private void txtBuscarFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarFKeyReleased
+        
+    }//GEN-LAST:event_txtBuscarFKeyReleased
+
+    public JTextField getTxtDni() {
+        return txtDni;
+    }
+
+    public void setTxtDni(JTextField txtDni) {
+        this.txtDni = txtDni;
+    }
 
     
     
@@ -512,7 +527,6 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
     public javax.swing.JButton btnModificarP;
     public javax.swing.JButton btnNuevaSemana;
     private javax.swing.JButton btnVerPagos;
-    public javax.swing.JCheckBox checkPrueba;
     public javax.swing.JButton generarReporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -525,7 +539,7 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaEmpleado;
-    public javax.swing.JTextField txtBuscar;
+    public javax.swing.JTextField txtBuscarF;
     public javax.swing.JTextField txtDni;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtTelefono;

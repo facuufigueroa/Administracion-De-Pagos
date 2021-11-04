@@ -561,7 +561,7 @@ public class Consultas extends ConexionBD {
         Connection con = getConnection();
         Statement st;
         String s = null;
-
+     
         try {
             st = con.createStatement();
 
@@ -586,7 +586,7 @@ public class Consultas extends ConexionBD {
                  t.setTurnoCuatro(rs.getString("t4"));
                  t.setDescuento(rs.getString("descuento"));
                  t.setTotal(rs.getString("total"));
-               
+                
             }
 
         } catch (Exception e) {
@@ -651,9 +651,9 @@ public class Consultas extends ConexionBD {
             ps.setString(2, turno.getTurnoDos());
             ps.setString(3, turno.getTurnoTres());
             ps.setString(4, turno.getTurnoCuatro());
-            ps.setString(7, turno.getDescuento());
-            ps.setString(8, turno.getTotal());
-            ps.setString(9, turno.getIdturno());
+            ps.setString(5, turno.getDescuento());
+            ps.setString(6, turno.getTotal());
+            ps.setString(7, turno.getIdturno());
             
 
             ps.executeUpdate();

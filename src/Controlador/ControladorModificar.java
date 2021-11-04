@@ -83,6 +83,7 @@ public class ControladorModificar implements ActionListener {
                 buscarM.botonModificarTodo.setVisible(false);
                 
                 turno=consulta.turnoModificado(buscarM.txtIdEmpleado.getText().toString(), buscarM.comboBoxDias.getSelectedItem().toString());
+               
                 String idempleado = buscarM.txtIdEmpleado.getText().toString();
                 String fecha = consulta.traer_fecha_empleado(idempleado,id_turno());
               
