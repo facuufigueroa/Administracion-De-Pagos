@@ -5,6 +5,8 @@ import Modelo.ConexionBD;
 import Modelo.Consultas;
 import Modelo.Empleado;
 import Modelo.Turnos;
+import Vista.BarraProgreso;
+import Vista.BarraProgresoGuardar;
 import Vista.GenerarImporte;
 import Vista.PagosEmpleado;
 import java.awt.event.ActionEvent;
@@ -13,7 +15,10 @@ import static java.lang.Integer.parseInt;
 import static java.lang.String.valueOf;
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 
 public class ControladorImporte implements ActionListener{
@@ -22,6 +27,10 @@ public class ControladorImporte implements ActionListener{
     private GenerarImporte generarImp;
     private PagosEmpleado pagosE;
     private Turnos turno;
+    private BarraProgreso progresBar;
+    private BarraProgresoGuardar progresBarG;
+    private Timer time;
+    
     
     private Turnos turnoLunes;
     private Turnos turnoMartes;
@@ -75,6 +84,9 @@ public class ControladorImporte implements ActionListener{
         pagosE.checkSabado.addActionListener(this);
         pagosE.checkPremio.addActionListener(this);
         pagosE.btnModificar.addActionListener(this);
+        pagosE.btnVerTotal.addActionListener(this);
+      
+        
     }
             
     public void iniciar(){
@@ -93,7 +105,7 @@ public class ControladorImporte implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
      // guardarPagos(e);
-//      btnTotalTurnos(e);
+      btnTotalTurnos(e);
       guardarPago(e);
       modificarPago(e);
     }
@@ -170,12 +182,17 @@ public class ControladorImporte implements ActionListener{
     }*/
     
     public void guardarPago(ActionEvent e){
+       
+        BarraProgreso pgBar = new BarraProgreso();
+        
         if(e.getSource() == pagosE.btnGuardar){
-           
+            
             if( !fechaSinSeleccionar() ){
                 java.util.Date date = pagosE.fechaTurno.getDate();
                 long d = date.getTime();
                 java.sql.Date fecha= new java.sql.Date(d);
+                
+              
             try{
                 if(!consulta.verificarDiaExistente(idempleado, "1")
                         || !consulta.verificarDiaExistente(idempleado, "2")
@@ -187,6 +204,10 @@ public class ControladorImporte implements ActionListener{
                         
                         
                         ){
+                ControladorBarra cb = new ControladorBarra();
+                cb.pgbar();
+                                            
+                                
                 turnoLunes.setTurnoUno(isCero(pagosE.txt1L.getText())?pagosE.txt1L.getText():"0");
                 turnoLunes.setTurnoDos(isCero(pagosE.txt2L.getText())?pagosE.txt2L.getText():"0");
                 turnoLunes.setTurnoTres(isCero(pagosE.txt3L.getText())?pagosE.txt3L.getText():"0");
@@ -199,7 +220,7 @@ public class ControladorImporte implements ActionListener{
                                 
                 turnoMartes.setTurnoUno(isCero(pagosE.txt1Ma.getText())?pagosE.txt1Ma.getText():"0");
                 turnoMartes.setTurnoDos(isCero(pagosE.txt2Ma.getText())?pagosE.txt2Ma.getText():"0");
-                turnoMartes.setTurnoTres(isCero(pagosE.txt3Ma.getText())?pagosE.txt2Ma.getText():"0");
+                turnoMartes.setTurnoTres(isCero(pagosE.txt3Ma.getText())?pagosE.txt3Ma.getText():"0");
                 turnoMartes.setTurnoCuatro(isCero(pagosE.txt4Ma.getText())?pagosE.txt4Ma.getText():"0");
                 turnoMartes.setDescuento(isCero(pagosE.txtMaDes.getText())?pagosE.txtMaDes.getText():"0");
                 turnoMartes.setTotal(valueOf(calcular_subtotal(pagosE.txt1Ma.getText(),pagosE.txt2Ma.getText(),pagosE.txt3Ma.getText(),pagosE.txt4Ma.getText(),pagosE.txtMaDes.getText())));
@@ -208,7 +229,7 @@ public class ControladorImporte implements ActionListener{
                 
                 turnoMiercoles.setTurnoUno(isCero(pagosE.txt1Mi.getText())?pagosE.txt1Mi.getText():"0");
                 turnoMiercoles.setTurnoDos(isCero(pagosE.txt2Mi.getText())?pagosE.txt2Mi.getText():"0");
-                turnoMiercoles.setTurnoTres(isCero(pagosE.txt3Mi.getText())?pagosE.txt2Mi.getText():"0");
+                turnoMiercoles.setTurnoTres(isCero(pagosE.txt3Mi.getText())?pagosE.txt3Mi.getText():"0");
                 turnoMiercoles.setTurnoCuatro(isCero(pagosE.txt4Mi.getText())?pagosE.txt4Mi.getText():"0");
                 turnoMiercoles.setDescuento(isCero(pagosE.txtMiDes.getText())?pagosE.txtMiDes.getText():"0");
                 turnoMiercoles.setTotal(valueOf(calcular_subtotal(pagosE.txt1Mi.getText(),pagosE.txt2Mi.getText(),pagosE.txt3Mi.getText(),pagosE.txt4Mi.getText(),pagosE.txtMiDes.getText())));
@@ -217,7 +238,7 @@ public class ControladorImporte implements ActionListener{
                     
                 turnoJueves.setTurnoUno(isCero(pagosE.txt1J.getText())?pagosE.txt1J.getText():"0");
                 turnoJueves.setTurnoDos(isCero(pagosE.txt2J.getText())?pagosE.txt2J.getText():"0");
-                turnoJueves.setTurnoTres(isCero(pagosE.txt3J.getText())?pagosE.txt2J.getText():"0");
+                turnoJueves.setTurnoTres(isCero(pagosE.txt3J.getText())?pagosE.txt3J.getText():"0");
                 turnoJueves.setTurnoCuatro(isCero(pagosE.txt4J.getText())?pagosE.txt4J.getText():"0");
                 turnoJueves.setDescuento(isCero(pagosE.txtJDes.getText())?pagosE.txtJDes.getText():"0");
                 turnoJueves.setTotal(valueOf(calcular_subtotal(pagosE.txt1J.getText(),pagosE.txt2J.getText(),pagosE.txt3J.getText(),pagosE.txt4J.getText(),pagosE.txtJDes.getText())));
@@ -253,7 +274,8 @@ public class ControladorImporte implements ActionListener{
                 turnoPremio.setTotal(valueOf(calcular_subtotal(pagosE.txt1P.getText(),pagosE.txt2P.getText(),pagosE.txt3P.getText(),pagosE.txt4P.getText(),pagosE.txtPDes.getText())));
                 turnoPremio.setIdempleado(idempleado);
                 turnoPremio.setFecha(fecha);
-                                
+                
+                               
                 
                 if(consulta.guardarTurnos(turnoLunes)){
                     consulta.agregar_diasturno("1", consulta.traerid_turno());
@@ -261,6 +283,7 @@ public class ControladorImporte implements ActionListener{
                     String idturnosDos = consulta.traerid_turno();
                     String iddia = consulta.traerIdDiaDelTurno(idturnosDos);
                     consulta.agregar_empleado_turno(idempleado,consulta.traerid_turno(),iddia);
+                    
                 }
                 if(consulta.guardarTurnos(turnoMartes)){
                     consulta.agregar_diasturno("2", consulta.traerid_turno());
@@ -308,14 +331,15 @@ public class ControladorImporte implements ActionListener{
 
                 }
                 
+                
                 int sueldoPrimario = parseInt(consulta.calcularSueldo(idempleado)); //SUELDO DEL EMPLEADO QUE USO EN CONTROLADOR EMPLEADO
                 sueldo=Integer.toString(sueldoPrimario);
                 consulta.asignarSueldo(sueldo,idempleado);
-                JOptionPane.showMessageDialog(null,"<html><p style = \"font:20px\"> TURNO GUARDADO CON EXITO </p></html>","CARGAR TURNO", 1);
+                
             }
             else{
                 JOptionPane.showMessageDialog(null,"<html><p style = \"font:20px\"> EL PAGO DEL EMPLEADO YA SE EFECTUO, "
-                    + "PARA MODIFICAR DEBE IR AL MENU DE OPCIONES Y PRESIONAR MODIFICAR </p></html>","ERROR DE SINTAXYS", 0);
+                    + "PARA MODIFICAR PAGO PRESIONAR EL BOTON MODIFICAR </p></html>","ERROR DE SINTAXYS", 0);
 
                 }
                 }
@@ -324,16 +348,16 @@ public class ControladorImporte implements ActionListener{
                System.out.println(ex);
             } 
                     
-                
+            
+            
             }
             else{
                 JOptionPane.showMessageDialog(null,"<html><p style = \"font:20px\"> NO INGRESO FECHA, INGERESE FECHA EN EL CALENDARIO</p></html>","ERROR DE SINTAXYS", 0);
             }
             
-
-            }
-           
         }
+          
+    }
         
     
     
@@ -354,8 +378,9 @@ public class ControladorImporte implements ActionListener{
     
     public void btnTotalTurnos(ActionEvent e){
         
-        if(e.getSource()==generarImp.btnCalcularTotal){
-          calcularTotal();
+        if(e.getSource()==pagosE.btnVerTotal){
+          
+          pagosE.txtTotal.setText(String.valueOf(calcular_total()));
         }
     }
     
@@ -432,10 +457,10 @@ public class ControladorImporte implements ActionListener{
     
     public void modificarPago(ActionEvent e){
         if(e.getSource() == pagosE.btnModificar){
+           BarraProgreso pgBar = new BarraProgreso();
+           if(!verificarBlancos(pagosE)){
            
-                
             turnoLunes.setTurnoUno(isCero(pagosE.txt1L.getText())?pagosE.txt1L.getText():"0");
-            System.out.println(turnoLunes.getTurnoUno());
             turnoLunes.setTurnoDos(isCero(pagosE.txt2L.getText())?pagosE.txt2L.getText():"0");
             turnoLunes.setTurnoTres(isCero(pagosE.txt3L.getText())?pagosE.txt3L.getText():"0");
             turnoLunes.setTurnoCuatro(isCero(pagosE.txt4L.getText())?pagosE.txt4L.getText():"0");
@@ -448,7 +473,7 @@ public class ControladorImporte implements ActionListener{
             
             turnoMartes.setTurnoUno(isCero(pagosE.txt1Ma.getText())?pagosE.txt1Ma.getText():"0");
             turnoMartes.setTurnoDos(isCero(pagosE.txt2Ma.getText())?pagosE.txt2Ma.getText():"0");
-            turnoMartes.setTurnoTres(isCero(pagosE.txt3Ma.getText())?pagosE.txt2Ma.getText():"0");
+            turnoMartes.setTurnoTres(isCero(pagosE.txt3Ma.getText())?pagosE.txt3Ma.getText():"0");
             turnoMartes.setTurnoCuatro(isCero(pagosE.txt4Ma.getText())?pagosE.txt4Ma.getText():"0");
             turnoMartes.setDescuento(isCero(pagosE.txtMaDes.getText())?pagosE.txtMaDes.getText():"0");
             turnoMartes.setTotal(valueOf(calcular_subtotal(pagosE.txt1Ma.getText(),pagosE.txt2Ma.getText(),pagosE.txt3Ma.getText(),pagosE.txt4Ma.getText(),pagosE.txtMaDes.getText())));
@@ -458,7 +483,7 @@ public class ControladorImporte implements ActionListener{
                 
             turnoMiercoles.setTurnoUno(isCero(pagosE.txt1Mi.getText())?pagosE.txt1Mi.getText():"0");
             turnoMiercoles.setTurnoDos(isCero(pagosE.txt2Mi.getText())?pagosE.txt2Mi.getText():"0");
-            turnoMiercoles.setTurnoTres(isCero(pagosE.txt3Mi.getText())?pagosE.txt2Mi.getText():"0");
+            turnoMiercoles.setTurnoTres(isCero(pagosE.txt3Mi.getText())?pagosE.txt3Mi.getText():"0");
             turnoMiercoles.setTurnoCuatro(isCero(pagosE.txt4Mi.getText())?pagosE.txt4Mi.getText():"0");
             turnoMiercoles.setDescuento(isCero(pagosE.txtMiDes.getText())?pagosE.txtMiDes.getText():"0");
             turnoMiercoles.setTotal(valueOf(calcular_subtotal(pagosE.txt1Mi.getText(),pagosE.txt2Mi.getText(),pagosE.txt3Mi.getText(),pagosE.txt4Mi.getText(),pagosE.txtMiDes.getText())));
@@ -468,7 +493,7 @@ public class ControladorImporte implements ActionListener{
                     
             turnoJueves.setTurnoUno(isCero(pagosE.txt1J.getText())?pagosE.txt1J.getText():"0");
             turnoJueves.setTurnoDos(isCero(pagosE.txt2J.getText())?pagosE.txt2J.getText():"0");
-            turnoJueves.setTurnoTres(isCero(pagosE.txt3J.getText())?pagosE.txt2J.getText():"0");
+            turnoJueves.setTurnoTres(isCero(pagosE.txt3J.getText())?pagosE.txt3J.getText():"0");
             turnoJueves.setTurnoCuatro(isCero(pagosE.txt4J.getText())?pagosE.txt4J.getText():"0");
             turnoJueves.setDescuento(isCero(pagosE.txtJDes.getText())?pagosE.txtJDes.getText():"0");
             turnoJueves.setTotal(valueOf(calcular_subtotal(pagosE.txt1J.getText(),pagosE.txt2J.getText(),pagosE.txt3J.getText(),pagosE.txt4J.getText(),pagosE.txtJDes.getText())));
@@ -525,17 +550,155 @@ public class ControladorImporte implements ActionListener{
                 int sueldoPrimario = parseInt(consulta.calcularSueldo(idempleado)); //SUELDO DEL EMPLEADO QUE USO EN CONTROLADOR EMPLEADO
                 sueldo=Integer.toString(sueldoPrimario);
                 consulta.asignarSueldo(sueldo,idempleado);
-                JOptionPane.showMessageDialog(null, "TURNO MOFIDICADO CON EXITO", "EDITAR EMPLEADO", 3);
-                //buscarM.setVisible(false);
+                
+            pgBar.setVisible(true);
+            Thread t = new Thread(new Runnable(){
+               @Override
+               public void run(){
+                   int c = 0;
+                   while(c<100){
+                       try {
+                        pgBar.progresBar.setValue(c);
+                       
+                           Thread.sleep(18);
+                           c++;
+                       } catch (InterruptedException ex) {
+                           Logger.getLogger(ControladorImporte.class.getName()).log(Level.SEVERE, null, ex);
+                       }
+                      
+                   }
+                   JOptionPane.showMessageDialog(null, "<html><p style = \"font:20px\"> TURNO MOFIDICADO CON EXITO </p></html>", "EDITAR TURNO", 3);
+                   pgBar.setVisible(false);
+               }
+               
+           });
+           t.start();
+               
         }
+           }
+           else{
+               JOptionPane.showMessageDialog(null, "<html><p style = \"font:20px\"> NO SE PUEDE MODIFICAR SIN HABER EFECTUADO ANTES EL PAGO, GENERE EL PAGO HACIENDO CLICK EN EL BOTON GUARDAR </p></html>");
+           }
+        
         }
         
      
     }
     
-    
+    public int calcular_total(){
+        int total=0;
+        int totalCajas=0;
+        totalCajas+= (isCero(pagosE.txt1L.getText())?parseInt(pagosE.txt1L.getText()):0)+
+                (isCero(pagosE.txt2L.getText())?parseInt(pagosE.txt2L.getText()):0)+
+                (isCero(pagosE.txt3L.getText())?parseInt(pagosE.txt3L.getText()):0)+
+                (isCero(pagosE.txt4L.getText())?parseInt(pagosE.txt4L.getText()):0)+
+                
+                (isCero(pagosE.txt1Ma.getText())?parseInt(pagosE.txt1Ma.getText()):0)+
+                (isCero(pagosE.txt2Ma.getText())?parseInt(pagosE.txt2Ma.getText()):0)+
+                (isCero(pagosE.txt3Ma.getText())?parseInt(pagosE.txt3Ma.getText()):0)+
+                (isCero(pagosE.txt4Ma.getText())?parseInt(pagosE.txt4Ma.getText()):0)+
+                
+                
+                (isCero(pagosE.txt1Mi.getText())?parseInt(pagosE.txt1Mi.getText()):0)+
+                (isCero(pagosE.txt2Mi.getText())?parseInt(pagosE.txt2Mi.getText()):0)+
+                (isCero(pagosE.txt3Mi.getText())?parseInt(pagosE.txt3Mi.getText()):0)+
+                (isCero(pagosE.txt4Mi.getText())?parseInt(pagosE.txt4Mi.getText()):0)+
+              
+                
+                (isCero(pagosE.txt1J.getText())?parseInt(pagosE.txt1J.getText()):0)+
+                (isCero(pagosE.txt2J.getText())?parseInt(pagosE.txt2J.getText()):0)+
+                (isCero(pagosE.txt3J.getText())?parseInt(pagosE.txt3J.getText()):0)+
+                (isCero(pagosE.txt4J.getText())?parseInt(pagosE.txt4J.getText()):0)+
+                
+                
+                (isCero(pagosE.txt1V.getText())?parseInt(pagosE.txt1V.getText()):0)+
+                (isCero(pagosE.txt2V.getText())?parseInt(pagosE.txt2V.getText()):0)+
+                (isCero(pagosE.txt3V.getText())?parseInt(pagosE.txt3V.getText()):0)+
+                (isCero(pagosE.txt4V.getText())?parseInt(pagosE.txt4V.getText()):0)+
+               
+                
+                (isCero(pagosE.txt1S.getText())?parseInt(pagosE.txt1S.getText()):0)+
+                (isCero(pagosE.txt2S.getText())?parseInt(pagosE.txt2S.getText()):0)+
+                (isCero(pagosE.txt3S.getText())?parseInt(pagosE.txt3S.getText()):0)+
+                (isCero(pagosE.txt4S.getText())?parseInt(pagosE.txt4S.getText()):0)+
+            
+                
+                (isCero(pagosE.txt1P.getText())?parseInt(pagosE.txt1P.getText()):0)+
+                (isCero(pagosE.txt2P.getText())?parseInt(pagosE.txt2P.getText()):0)+
+                (isCero(pagosE.txt3P.getText())?parseInt(pagosE.txt3P.getText()):0)+
+                (isCero(pagosE.txt4P.getText())?parseInt(pagosE.txt4P.getText()):0);
+            
+        
+        int descuento =0;
+        descuento +=(isCero(pagosE.txtLDes.getText())?parseInt(pagosE.txtLDes.getText()):0)+
+                    (isCero(pagosE.txtMaDes.getText())?parseInt(pagosE.txtMaDes.getText()):0)+
+                    (isCero(pagosE.txtMiDes.getText())?parseInt(pagosE.txtMiDes.getText()):0)+
+                    (isCero(pagosE.txtJDes.getText())?parseInt(pagosE.txtJDes.getText()):0)+
+                    (isCero(pagosE.txtVDes.getText())?parseInt(pagosE.txtVDes.getText()):0)+
+                    (isCero(pagosE.txtSDes.getText())?parseInt(pagosE.txtSDes.getText()):0)+
+                    (isCero(pagosE.txtPDes.getText())?parseInt(pagosE.txtPDes.getText()):0);
+                    
+        total=totalCajas-descuento;
+        
+         return total;         
     }
-
+    
+    
+    //metodo que verifica los txt que esten en blanco
+    public boolean verificarBlancos(PagosEmpleado pagosE){
+        
+        return pagosE.txt1L.getText().isEmpty()
+            || pagosE.txt2L.getText().isEmpty()
+            || pagosE.txt3L.getText().isEmpty()
+            || pagosE.txt4J.getText().isEmpty()
+            || pagosE.txtLDes.getText().isEmpty()
+                
+            || pagosE.txt1Ma.getText().isEmpty()
+            || pagosE.txt2Ma.getText().isEmpty()
+            || pagosE.txt3Ma.getText().isEmpty()
+            || pagosE.txt4Ma.getText().isEmpty()
+            || pagosE.txtMaDes.getText().isEmpty()
+            
+            || pagosE.txt1Mi.getText().isEmpty()
+            || pagosE.txt2Mi.getText().isEmpty()
+            || pagosE.txt3Mi.getText().isEmpty()
+            || pagosE.txt4Mi.getText().isEmpty()
+            || pagosE.txtMiDes.getText().isEmpty()
+            
+            || pagosE.txt1J.getText().isEmpty()
+            || pagosE.txt2J.getText().isEmpty()
+            || pagosE.txt3J.getText().isEmpty()
+            ||pagosE.txt4J.getText().isEmpty()
+            || pagosE.txtJDes.getText().isEmpty()
+            
+            || pagosE.txt1V.getText().isEmpty()
+            || pagosE.txt2J.getText().isEmpty()
+            || pagosE.txt3J.getText().isEmpty()
+            || pagosE.txt4J.getText().isEmpty()
+            || pagosE.txtVDes.getText().isEmpty()
+            
+            || pagosE.txt1S.getText().isEmpty()
+            || pagosE.txt2S.getText().isEmpty()
+            || pagosE.txt3S.getText().isEmpty()
+            || pagosE.txt4V.getText().isEmpty()
+            || pagosE.txtSDes.getText().isEmpty()
+            
+            || pagosE.txt1P.getText().isEmpty()
+            || pagosE.txt2P.getText().isEmpty()
+            || pagosE.txt3P.getText().isEmpty()
+            || pagosE.txt4P.getText().isEmpty()
+            || pagosE.txtPDes.getText().isEmpty();
+            
+      
+    }
+    
+    
+    
+    
+    
+    
+    
+}
 
     
  

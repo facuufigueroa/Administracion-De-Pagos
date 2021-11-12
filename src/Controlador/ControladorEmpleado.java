@@ -63,7 +63,6 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
         this.registrarE.btnEditar.addActionListener(this);
         this.registrarE.btnModificar.addActionListener(this);
         this.registrarE.btnGenerarPago.addActionListener(this);
-        this.registrarE.btnModificarP.addActionListener(this);
         this.registrarE.btnNuevaSemana.addActionListener(this);
         this.registrarE.generarReporte.addActionListener(this);
         this.registrarE.txtBuscarF.addKeyListener(this);
@@ -103,7 +102,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
         editar(e);
         modificar(e);
         //abrirGenerarPago(e);
-        abrirModificarPago(e);
+       
        // abrirGenerarPagoPrueba(e);
         abrir_generarPago(e);
        
@@ -374,7 +373,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
     }
     
     
-    public void abrirModificarPago(ActionEvent e) 
+   /* public void abrirModificarPago(ActionEvent e) 
    {
         if (e.getSource() == registrarE.btnModificarP) {
             String idempleado=null;
@@ -414,7 +413,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
             }
         }
        
-    }
+    }*/
 
    
     public void nuevaSemana(ActionEvent e) throws SQLException{

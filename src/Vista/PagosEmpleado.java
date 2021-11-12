@@ -80,7 +80,7 @@ public class PagosEmpleado extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtTotal = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnVerTotal = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -587,10 +587,11 @@ public class PagosEmpleado extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(153, 0, 0));
 
         txtTotal.setEditable(false);
+        txtTotal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calcular.png"))); // NOI18N
-        jButton1.setText("VER TOTAL");
+        btnVerTotal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnVerTotal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/calcular.png"))); // NOI18N
+        btnVerTotal.setText("VER TOTAL");
 
         btnGuardar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardarPago_1.png"))); // NOI18N
@@ -613,7 +614,7 @@ public class PagosEmpleado extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnVerTotal)
                 .addGap(39, 39, 39)
                 .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -626,7 +627,7 @@ public class PagosEmpleado extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVerTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
@@ -896,6 +897,7 @@ public class PagosEmpleado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnGuardar;
     public javax.swing.JButton btnModificar;
+    public javax.swing.JButton btnVerTotal;
     public javax.swing.JCheckBox checkJueves;
     public javax.swing.JCheckBox checkLunes;
     public javax.swing.JCheckBox checkMartes;
@@ -904,7 +906,6 @@ public class PagosEmpleado extends javax.swing.JFrame {
     public javax.swing.JCheckBox checkSabado;
     public javax.swing.JCheckBox checkViernes;
     public com.toedter.calendar.JDateChooser fechaTurno;
-    public javax.swing.JButton jButton1;
     public com.toedter.calendar.JCalendar jCalendar1;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
