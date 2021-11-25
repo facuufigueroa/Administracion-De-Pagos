@@ -458,6 +458,8 @@ public class ControladorImporte implements ActionListener{
     public void modificarPago(ActionEvent e){
         if(e.getSource() == pagosE.btnModificar){
            BarraProgreso pgBar = new BarraProgreso();
+           
+        if(!verificarTodoBlancos(pagosE)){   
            if(!verificarBlancos(pagosE)){
            
             turnoLunes.setTurnoUno(isCero(pagosE.txt1L.getText())?pagosE.txt1L.getText():"0");
@@ -550,36 +552,19 @@ public class ControladorImporte implements ActionListener{
                 int sueldoPrimario = parseInt(consulta.calcularSueldo(idempleado)); //SUELDO DEL EMPLEADO QUE USO EN CONTROLADOR EMPLEADO
                 sueldo=Integer.toString(sueldoPrimario);
                 consulta.asignarSueldo(sueldo,idempleado);
-                
-            pgBar.setVisible(true);
-            Thread t = new Thread(new Runnable(){
-               @Override
-               public void run(){
-                   int c = 0;
-                   while(c<100){
-                       try {
-                        pgBar.progresBar.setValue(c);
-                       
-                           Thread.sleep(18);
-                           c++;
-                       } catch (InterruptedException ex) {
-                           Logger.getLogger(ControladorImporte.class.getName()).log(Level.SEVERE, null, ex);
-                       }
-                      
-                   }
-                   JOptionPane.showMessageDialog(null, "<html><p style = \"font:20px\"> TURNO MOFIDICADO CON EXITO </p></html>", "EDITAR TURNO", 3);
-                   pgBar.setVisible(false);
-               }
-               
-           });
-           t.start();
+                //excepcion
+                JOptionPane.showMessageDialog(null, "<html><p style = \"font:20px\"> TURNO MODIFICADO CON EXITO </p></html>");
                
         }
            }
            else{
-               JOptionPane.showMessageDialog(null, "<html><p style = \"font:20px\"> NO SE PUEDE MODIFICAR SIN HABER EFECTUADO ANTES EL PAGO, GENERE EL PAGO HACIENDO CLICK EN EL BOTON GUARDAR </p></html>");
+               JOptionPane.showMessageDialog(null, "<html><p style = \"font:20px\"> RELLENE CAMPOS FALTANTES CON CERO </p></html>");
            }
         
+        }
+            else{
+               JOptionPane.showMessageDialog(null, "<html><p style = \"font:20px\"> NO SE PUEDE MODIFICAR SIN HABER EFECTUADO ANTES EL PAGO, GENERE EL PAGO HACIENDO CLICK EN EL BOTON GUARDAR </p></html>");
+           }
         }
         
      
@@ -648,7 +633,7 @@ public class ControladorImporte implements ActionListener{
     public boolean verificarBlancos(PagosEmpleado pagosE){
         
         return pagosE.txt1L.getText().isEmpty()
-            || pagosE.txt2L.getText().isEmpty()
+            | pagosE.txt2L.getText().isEmpty()
             || pagosE.txt3L.getText().isEmpty()
             || pagosE.txt4J.getText().isEmpty()
             || pagosE.txtLDes.getText().isEmpty()
@@ -692,7 +677,58 @@ public class ControladorImporte implements ActionListener{
       
     }
     
+    public boolean verificarTodoBlancos(PagosEmpleado pagosE){
+        
+        return pagosE.txt1L.getText().isEmpty()
+            &&pagosE.txt2L.getText().isEmpty()
+            && pagosE.txt3L.getText().isEmpty()
+            && pagosE.txt4J.getText().isEmpty()
+            && pagosE.txtLDes.getText().isEmpty()
+                
+            && pagosE.txt1Ma.getText().isEmpty()
+            && pagosE.txt2Ma.getText().isEmpty()
+            && pagosE.txt3Ma.getText().isEmpty()
+            &&pagosE.txt4Ma.getText().isEmpty()
+            && pagosE.txtMaDes.getText().isEmpty()
+            
+            && pagosE.txt1Mi.getText().isEmpty()
+            && pagosE.txt2Mi.getText().isEmpty()
+            && pagosE.txt3Mi.getText().isEmpty()
+            && pagosE.txt4Mi.getText().isEmpty()
+            && pagosE.txtMiDes.getText().isEmpty()
+            
+            && pagosE.txt1J.getText().isEmpty()
+            && pagosE.txt2J.getText().isEmpty()
+            && pagosE.txt3J.getText().isEmpty()
+            &&pagosE.txt4J.getText().isEmpty()
+            && pagosE.txtJDes.getText().isEmpty()
+            
+            && pagosE.txt1V.getText().isEmpty()
+            && pagosE.txt2J.getText().isEmpty()
+            && pagosE.txt3J.getText().isEmpty()
+            && pagosE.txt4J.getText().isEmpty()
+            && pagosE.txtVDes.getText().isEmpty()
+            
+            && pagosE.txt1S.getText().isEmpty()
+            && pagosE.txt2S.getText().isEmpty()
+            && pagosE.txt3S.getText().isEmpty()
+            && pagosE.txt4V.getText().isEmpty()
+            && pagosE.txtSDes.getText().isEmpty()
+            
+            && pagosE.txt1P.getText().isEmpty()
+            && pagosE.txt2P.getText().isEmpty()
+            && pagosE.txt3P.getText().isEmpty()
+            && pagosE.txt4P.getText().isEmpty()
+            && pagosE.txtPDes.getText().isEmpty();
+            
+      
+    }
     
+    
+    public void progresBar(){
+        
+            
+    }
     
     
     

@@ -66,7 +66,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
         this.registrarE.btnNuevaSemana.addActionListener(this);
         this.registrarE.generarReporte.addActionListener(this);
         this.registrarE.txtBuscarF.addKeyListener(this);
-        
+        this.registrarE.btnVerPagos.addActionListener(this);
        
         
       
@@ -312,30 +312,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
     }
 
     
-    
-    
-   /* public void abrirGenerarPago(ActionEvent e) 
-   {
-        if (e.getSource() == registrarE.btnGenerarPago) {
-            String idempleado=null;
-            int fila = registrarE.getTablaEmpleado().getSelectedRow();
-            consulta.traerid_turno();
-            
-
-            if (fila >= 0) {
-                idempleado = consulta.traer_id(registrarE.getTablaEmpleado().getValueAt(fila, 0).toString());
-                GenerarImporte generarImp = new GenerarImporte();
-                
-                Turnos turno = new Turnos();
-                
-                ControladorImporte controladorI = new ControladorImporte(consulta, generarImp, turno, idempleado);
-                controladorI.iniciar();
-                generarImp.setVisible(true);
-                
-            }
-        }
-       
-    }*/
+   
     
     public void abrirGenerarPagoPrueba(ActionEvent e){
         if (e.getSource() == registrarE.btnGenerarPago) {

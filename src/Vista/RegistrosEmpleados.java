@@ -13,6 +13,9 @@ import Modelo.Empleado;
 import Modelo.Turnos;
 import Reporte.Reporte;
 import Reporte.VerPagos;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -225,13 +228,10 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
                                         .addComponent(jLabel5)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(16, 16, 16)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addGap(16, 16, 16)
-                                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addGap(16, 16, 16)
-                                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -435,8 +435,8 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnVerPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPagosActionPerformed
-            VerPagos verPagos = new VerPagos();
-            verPagos.conexionReporte();
+            VerPagos reporte= new VerPagos();
+        reporte.conexionReporte();
     }//GEN-LAST:event_btnVerPagosActionPerformed
 
     private void txtBuscarFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarFKeyReleased
@@ -510,7 +510,7 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
     public javax.swing.JButton btnGenerarPago;
     public javax.swing.JButton btnModificar;
     public javax.swing.JButton btnNuevaSemana;
-    private javax.swing.JButton btnVerPagos;
+    public javax.swing.JButton btnVerPagos;
     public javax.swing.JButton generarReporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
