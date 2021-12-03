@@ -166,6 +166,32 @@ public class Consultas extends ConexionBD {
         return s;
 
     }
+    
+    public String traerId_porNombre (String name){
+        Connection con = getConnection();
+        Statement st;
+        String s = null;
+
+        try {
+            String sql = "SELECT  idempleado FROM empleados WHERE  nombre = '" + name + "'";
+
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                s = rs.getString(1);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return s;
+    }
+    
+    
+    
 
     //METODO PARA VERIFICAR SI EL DNI YA ESTA EN LA BASE DE DATOS, TRUE SI ESTA, FALSE SI NO.
     public boolean existeCodigo(String dni) {
@@ -1040,5 +1066,28 @@ public class Consultas extends ConexionBD {
         } 
     }
     
+    public String traerSueldosTotales(){
+        Connection con = getConnection();
+        Statement st;
+        String s = null;
+
+        try {
+            String sql = "SELECT * FROM mensualidad";
+
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                s = rs.getString(2);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return s;
+    }
+   
     
 }

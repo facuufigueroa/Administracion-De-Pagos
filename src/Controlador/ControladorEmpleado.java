@@ -6,7 +6,9 @@ import Modelo.ConexionBD;
 import Modelo.Consultas;
 import Modelo.Empleado;
 import Modelo.Turnos;
+import Reporte.GuardarReportDirecto;
 import Reporte.Reporte;
+import Reporte.VerPagos;
 import Vista.BuscarModificar;
 import Vista.GenerarImporte;
 import Vista.ModificarPagos;
@@ -35,6 +37,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import static sun.net.www.http.HttpClient.New;
 
 public class ControladorEmpleado implements ActionListener, KeyListener {
 
@@ -67,8 +70,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
         this.registrarE.generarReporte.addActionListener(this);
         this.registrarE.txtBuscarF.addKeyListener(this);
         this.registrarE.btnVerPagos.addActionListener(this);
-       
-        
+      
       
         iniciarJTable();
 
@@ -105,7 +107,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
        
        // abrirGenerarPagoPrueba(e);
         abrir_generarPago(e);
-       
+     
         try {
             nuevaSemana(e);
         } catch (SQLException ex) {
@@ -120,7 +122,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
         busquedaFiltrada(e);
     }
      
- 
+    
    
 
     public void limpiarCeldas() {
@@ -349,48 +351,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
         }
     }
     
-    
-   /* public void abrirModificarPago(ActionEvent e) 
-   {
-        if (e.getSource() == registrarE.btnModificarP) {
-            String idempleado=null;
-            int fila = registrarE.getTablaEmpleado().getSelectedRow();
-            
-            
-            if (fila >= 0) {
-                
-                ModificarPagos modP = new ModificarPagos();
-                BuscarModificar buscarM = new BuscarModificar();
-                Turnos turno = new Turnos();
-                
-                
-                idempleado = consulta.traer_id(registrarE.getTablaEmpleado().getValueAt(fila, 0).toString());
-                
-                
-                
-                buscarM.txtIdEmpleado.setText(idempleado);
-                buscarM.txtNombre.setText(consulta.traerNombre(idempleado));
-            
-                
-               
-                ControladorModificar controladorM = new ControladorModificar(consulta,turno,buscarM, idempleado);
-                controladorM.iniciar();
-                buscarM.setVisible(true);
-                buscarM.botonModificarTodo.setVisible(false);
-                buscarM.btnCalcularTotal.setEnabled(false);
-                buscarM.txtt1.setEditable(false);
-                buscarM.txtt2.setEditable(false);
-                buscarM.txtt3.setEditable(false);
-                buscarM.txtt4.setEditable(false);
-                buscarM.txtt5.setEditable(false);
-                buscarM.txtt6.setEditable(false);
-                buscarM.cajaDescuento.setEditable(false);
-                
-                
-            }
-        }
-       
-    }*/
+   
 
    
     public void nuevaSemana(ActionEvent e) throws SQLException{
@@ -428,6 +389,24 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
            
         }
     }
+    
+    public void verReporte(ActionEvent e) {
+        if (e.getSource() == registrarE.btnVerPagos){
+            try {
+                consulta.guardarMensualidad();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            VerPagos reporte = new VerPagos();
+
+            //reporte.conexionReporte();
+           
+        }
+    }
+    
+    
+    
+    
 
     
     public void busquedaFiltrada(KeyEvent k){
@@ -478,124 +457,38 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
     
     public void abrir_generarPago(ActionEvent e){
         if (e.getSource() == registrarE.btnGenerarPago) {
-            
+                  
             String idempleado=null;
-         
-            int fila = registrarE.getTablaEmpleado().getSelectedRow();
-            //consulta.traerid_turno();
-            
-
-            if (fila >= 0) {
-                idempleado = consulta.traer_id(registrarE.getTablaEmpleado().getValueAt(fila, 0).toString());
-                PagosEmpleado pagosEmp = new PagosEmpleado();
-                
                
-                
-                Turnos turno = new Turnos();
-                Turnos turnoLunes = new Turnos();
-                Turnos turnoMartes= new Turnos();
-                Turnos turnoMiercoles = new Turnos();
-                Turnos turnoJueves = new Turnos();
-                Turnos turnoViernes = new Turnos();
-                Turnos turnoSabado = new Turnos ();
-                Turnos turnoPremio = new Turnos ();
+            PagosEmpleado pagosEmp = new PagosEmpleado();
+           
+            Turnos turno = new Turnos();
+            Turnos turnoLunes = new Turnos();
+            Turnos turnoMartes= new Turnos();
+            Turnos turnoMiercoles = new Turnos();
+            Turnos turnoJueves = new Turnos();
+            Turnos turnoViernes = new Turnos();
+            Turnos turnoSabado = new Turnos ();
+            Turnos turnoPremio = new Turnos ();
                         
-                
-                
-                ControladorImporte controladorI = new ControladorImporte(consulta, pagosEmp , turnoLunes ,turnoMartes, turnoMiercoles,
+               
+            ControladorImporte controladorI = new ControladorImporte(consulta, pagosEmp , turnoLunes ,turnoMartes, turnoMiercoles,
                         turnoJueves,
                         turnoViernes,
                         turnoSabado,
                         turnoPremio,
                         idempleado);
                 controladorI.iniciar();
+            
+               
+            pagosEmp.setVisible(true);
                 
-                turnoLunes=consulta.turnoModificado(idempleado, "Lunes");
-                pagosEmp.txt1L.setText(turnoLunes.getTurnoUno());
-                pagosEmp.txt2L.setText(turnoLunes.getTurnoDos());
-                pagosEmp.txt3L.setText(turnoLunes.getTurnoTres());
-                pagosEmp.txt4L.setText(turnoLunes.getTurnoCuatro());
-                pagosEmp.txtLDes.setText(turnoLunes.getDescuento());
-                
-                turnoMartes=consulta.turnoModificado(idempleado, "Martes");
-                pagosEmp.txt1Ma.setText(turnoMartes.getTurnoUno());
-                pagosEmp.txt2Ma.setText(turnoMartes.getTurnoDos());
-                pagosEmp.txt3Ma.setText(turnoMartes.getTurnoTres());
-                pagosEmp.txt4Ma.setText(turnoMartes.getTurnoCuatro());
-                pagosEmp.txtMaDes.setText(turnoMartes.getDescuento());
-                
-                turnoMiercoles=consulta.turnoModificado(idempleado, "Miercoles");
-                pagosEmp.txt1Mi.setText(turnoMiercoles.getTurnoUno());
-                pagosEmp.txt2Mi.setText(turnoMiercoles.getTurnoDos());
-                pagosEmp.txt3Mi.setText(turnoMiercoles.getTurnoTres());
-                pagosEmp.txt4Mi.setText(turnoMiercoles.getTurnoCuatro());
-                pagosEmp.txtMiDes.setText(turnoMiercoles.getDescuento());
-                
-                turnoJueves=consulta.turnoModificado(idempleado, "Jueves");
-                pagosEmp.txt1J.setText(turnoJueves.getTurnoUno());
-                pagosEmp.txt2J.setText(turnoJueves.getTurnoDos());
-                pagosEmp.txt3J.setText(turnoJueves.getTurnoTres());
-                pagosEmp.txt4J.setText(turnoJueves.getTurnoCuatro());
-                pagosEmp.txtJDes.setText(turnoJueves.getDescuento());
-                
-                turnoViernes=consulta.turnoModificado(idempleado, "Viernes");
-                pagosEmp.txt1V.setText(turnoViernes.getTurnoUno());
-                pagosEmp.txt2V.setText(turnoViernes.getTurnoDos());
-                pagosEmp.txt3V.setText(turnoViernes.getTurnoTres());
-                pagosEmp.txt4V.setText(turnoViernes.getTurnoCuatro());
-                pagosEmp.txtVDes.setText(turnoViernes.getDescuento());
-                
-                turnoSabado=consulta.turnoModificado(idempleado, "Sabado");
-                pagosEmp.txt1S.setText(turnoSabado.getTurnoUno());
-                pagosEmp.txt2S.setText(turnoSabado.getTurnoDos());
-                pagosEmp.txt3S.setText(turnoSabado.getTurnoTres());
-                pagosEmp.txt4S.setText(turnoSabado.getTurnoCuatro());
-                pagosEmp.txtSDes.setText(turnoSabado.getDescuento());
-                
-                turnoPremio=consulta.turnoModificado(idempleado, "Extra");
-                pagosEmp.txt1P.setText(turnoPremio.getTurnoUno());
-                pagosEmp.txt2P.setText(turnoPremio.getTurnoDos());
-                pagosEmp.txt3P.setText(turnoPremio.getTurnoTres());
-                pagosEmp.txt4P.setText(turnoPremio.getTurnoCuatro());
-                pagosEmp.txtPDes.setText(turnoPremio.getDescuento());
-                
-                
-                
-                pagosEmp.setVisible(true);
-                
+             
             }
-        }
+        
     }
     
-    /*public void modificarTodo(ActionEvent e){
-        if(e.getSource() == buscarM.botonModificarTodo){
-
-            turno.setTurnoUno(isCero(buscarM.txtt1.getText())?buscarM.txtt1.getText():"0");
-            turno.setTurnoDos(isCero(buscarM.txtt2.getText())?buscarM.txtt2.getText():"0");
-            turno.setTurnoTres(isCero(buscarM.txtt3.getText())?buscarM.txtt3.getText():"0");
-            turno.setTurnoCuatro(isCero(buscarM.txtt4.getText())?buscarM.txtt4.getText():"0");
-            turno.setDescuento(isCero(buscarM.cajaDescuento.getText())?buscarM.cajaDescuento.getText():"0");
-            turno.setTotal(buscarM.txtTotal.getText());
-            turno.setIdturno(id_turno());
-            //if(!verificarEspaciosEnBlanco(buscarM)){
-                
-                if(consulta.editarTurno(turno)){
-                String idemp=consulta.traerid_empleado(id_turno());
-                int sueldoPrimario = parseInt(consulta.calcularSueldo(idemp)); //SUELDO DEL EMPLEADO QUE USO EN CONTROLADOR EMPLEADO
-                sueldo=Integer.toString(sueldoPrimario);
-                consulta.asignarSueldo(sueldo,idemp);
-                JOptionPane.showMessageDialog(null, "TURNO MOFIDICADO CON EXITO", "EDITAR EMPLEADO", 3);
-                buscarM.setVisible(false);
-
-               // }   
-            }
-           // else{
-               //JOptionPane.showMessageDialog(null, "PARA MODIFICAR EL TURNO, LOS CAMPOS NO DEBEN ESTAR VACIOS", "ERROR AL MODIFICAR", 0);
-
-            //}
-            
-        }
-    }*/ 
+     
     
     
     public boolean traeCeroDesdeBD(String numero){
