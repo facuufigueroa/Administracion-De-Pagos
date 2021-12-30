@@ -11,6 +11,7 @@ import Controlador.ControladorImporte;
 import Modelo.Consultas;
 import Modelo.Empleado;
 import Modelo.Turnos;
+import Reporte.GuardarReportDirecto;
 import Reporte.Reporte;
 import Reporte.VerPagos;
 import java.sql.SQLException;
@@ -65,6 +66,7 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
         botonActualizar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         txtBuscarF = new javax.swing.JTextField();
+        exportPdf = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaEmpleado = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -196,6 +198,15 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
             }
         });
 
+        exportPdf.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        exportPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pdf.png"))); // NOI18N
+        exportPdf.setText("GUARDAR PDF DIRECTO");
+        exportPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportPdfActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -230,9 +241,12 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
                                 .addGap(9, 9, 9)
                                 .addComponent(txtBuscarF, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(botonBorrar))
-                        .addGap(0, 22, Short.MAX_VALUE)))
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(22, 22, 22))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(botonBorrar)
+                        .addGap(103, 103, 103)
+                        .addComponent(exportPdf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -268,7 +282,9 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
                             .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(40, 40, 40)
-                .addComponent(botonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exportPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -334,13 +350,13 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
                 .addComponent(btnGenerarPago)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVerPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(generarReporte)
                 .addGap(21, 21, 21))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(319, 319, 319)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,6 +459,12 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtBuscarFKeyReleased
 
+    private void exportPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportPdfActionPerformed
+        
+        NombreReporte nomR= new NombreReporte();
+        nomR.setVisible(true);
+    }//GEN-LAST:event_exportPdfActionPerformed
+
     public JTextField getTxtDni() {
         return txtDni;
     }
@@ -511,6 +533,7 @@ public class RegistrosEmpleados extends javax.swing.JFrame {
     public javax.swing.JButton btnModificar;
     public javax.swing.JButton btnNuevaSemana;
     public javax.swing.JButton btnVerPagos;
+    public javax.swing.JButton exportPdf;
     public javax.swing.JButton generarReporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

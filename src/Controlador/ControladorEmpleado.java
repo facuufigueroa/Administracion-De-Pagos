@@ -70,6 +70,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
         this.registrarE.generarReporte.addActionListener(this);
         this.registrarE.txtBuscarF.addKeyListener(this);
         this.registrarE.btnVerPagos.addActionListener(this);
+        this.registrarE.exportPdf.addActionListener(this);
       
       
         iniciarJTable();
@@ -103,6 +104,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
         actualizar(e);
         editar(e);
         modificar(e);
+        actualizarMensualidad(e);
         //abrirGenerarPago(e);
        
        // abrirGenerarPagoPrueba(e);
@@ -389,6 +391,18 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
            
         }
     }
+    
+    public void actualizarMensualidad(ActionEvent e){
+        if(e.getSource() == registrarE.exportPdf){
+            try {
+                consulta.guardarMensualidad();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    
     
     public void verReporte(ActionEvent e) {
         if (e.getSource() == registrarE.btnVerPagos){

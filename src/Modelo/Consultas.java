@@ -606,12 +606,12 @@ public class Consultas extends ConexionBD {
 
             if (rs.next()) {
                  
-                 t.setTurnoUno(rs.getString("t1")); 
-                 t.setTurnoDos(rs.getString("t2"));
-                 t.setTurnoTres(rs.getString("t3"));
-                 t.setTurnoCuatro(rs.getString("t4"));
-                 t.setDescuento(rs.getString("descuento"));
-                 t.setTotal(rs.getString("total"));
+                 t.setTurnoUno(isCeroFromBD(rs.getString("t1"))?"":rs.getString("t1")); 
+                 t.setTurnoDos(isCeroFromBD(rs.getString("t2"))?"":rs.getString("t2"));
+                 t.setTurnoTres(isCeroFromBD(rs.getString("t3"))?"":rs.getString("t3"));
+                 t.setTurnoCuatro(isCeroFromBD(rs.getString("t4"))?"":rs.getString("t4"));
+                 t.setDescuento(isCeroFromBD(rs.getString("descuento"))?"":rs.getString("descuento"));
+                 t.setTotal(isCeroFromBD(rs.getString("total"))?"":rs.getString("total"));
                 
             }
 
@@ -621,6 +621,16 @@ public class Consultas extends ConexionBD {
         }
 
         return t;
+    }
+    
+      public boolean isCeroFromBD(String numero){
+        
+        if(numero.equals("0")){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
     
     
@@ -898,6 +908,14 @@ public class Consultas extends ConexionBD {
 
         }
     }
+    
+    public boolean validarFilaBlanco(String t1,String t2, String t3,String t4){
+        return t1.isEmpty() 
+                && t2.isEmpty()
+                && t3.isEmpty()
+                && t4.isEmpty();
+    }
+    
     
     public String traerid_empleado(String idturno){
         Connection con = getConnection();

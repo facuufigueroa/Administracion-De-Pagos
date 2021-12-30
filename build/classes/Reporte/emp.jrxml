@@ -32,18 +32,18 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="66" splitType="Stretch">
+		<band height="29" splitType="Stretch">
 			<staticText>
-				<reportElement x="111" y="14" width="343" height="26" uuid="4a755ef6-8634-4539-a5b0-e7803c7a7c05"/>
+				<reportElement x="111" y="0" width="343" height="14" uuid="4a755ef6-8634-4539-a5b0-e7803c7a7c05"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14" isBold="true" isUnderline="true"/>
+					<font fontName="Arial" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[MATADERO & FRIGORIFICO BRAGADO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="225" y="40" width="125" height="20" uuid="9a3a2dde-e2c1-40b4-9e58-7fc4e93cdd66"/>
+				<reportElement x="224" y="14" width="125" height="13" uuid="9a3a2dde-e2c1-40b4-9e58-7fc4e93cdd66"/>
 				<textElement>
-					<font fontName="Arial" size="14" isBold="true" isUnderline="true"/>
+					<font fontName="Arial" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[REPORTE PAGOS]]></text>
 			</staticText>
@@ -56,7 +56,7 @@ FROM
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="155" splitType="Stretch">
 			<textField>
 				<reportElement x="98" y="10" width="207" height="20" uuid="3caad065-6dbd-4a12-87d3-855988b07553"/>
 				<textElement>
@@ -93,7 +93,7 @@ FROM
 				<textFieldExpression><![CDATA[$F{sueldo}]]></textFieldExpression>
 			</textField>
 			<subreport isUsingCache="true">
-				<reportElement x="0" y="10" width="555" height="113" uuid="a2d63649-395f-4c0d-b658-0178b001597c"/>
+				<reportElement x="0" y="0" width="555" height="126" uuid="a2d63649-395f-4c0d-b658-0178b001597c"/>
 				<subreportParameter name="id_Pempleado">
 					<subreportParameterExpression><![CDATA[$F{idempleado}]]></subreportParameterExpression>
 				</subreportParameter>
