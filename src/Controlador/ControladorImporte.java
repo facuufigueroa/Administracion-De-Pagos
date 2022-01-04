@@ -104,12 +104,7 @@ public class ControladorImporte implements ActionListener{
     }
             
     public void iniciar(){
-       /* generarImp.setTitle("IMPORTES");
-        generarImp.setLocationRelativeTo(null);
-        generarImp.txtTotal.setEditable(false);
-        generarImp.txt_nombre_emp.setText(consulta.traerNombre(idempleado));
-        setearTxtEnCero();*/
-        
+             
         pagosE.setTitle("IMPORTES");
         pagosE.setLocationRelativeTo(null);
         pagosE.txtEmpleado.setText(consulta.traerNombre(idempleado));
@@ -164,73 +159,7 @@ public class ControladorImporte implements ActionListener{
         
     }
     
-    /*public void guardarPagos(ActionEvent e){
-       if(e.getSource()==generarImp.botonGuardarTodo){
-           
-           if (!fechaVacia() && !totalVacio()){
-               
-           
-           String id_dia = consulta.traerid_dia(generarImp.ComboBoxDias.getSelectedItem().toString());
-           try{
-               
-           
-           if(!consulta.verificarDiaExistente(idempleado,id_dia)){
-                java.util.Date date = generarImp.calendario.getDate();
-                long d = date.getTime();
-                java.sql.Date fecha= new java.sql.Date(d);
-                
-          
-                turno.setTurnoUno(isCero(generarImp.txtt1.getText())?generarImp.txtt1.getText():"0");
-                turno.setTurnoDos(isCero(generarImp.txtt2.getText())?generarImp.txtt2.getText():"0");
-                turno.setTurnoTres(isCero(generarImp.txtt3.getText())?generarImp.txtt3.getText():"0");
-                turno.setTurnoCuatro(isCero(generarImp.txtt4.getText())?generarImp.txtt4.getText():"0");
-                turno.setDescuento(isCero(generarImp.cajaDescuento.getText())?generarImp.cajaDescuento.getText():"0");
-                turno.setFecha(fecha);
-                turno.setTotal(valueOf(calcularTotal()));
-                turno.setIdempleado(idempleado);
-                
-                
-                
-                if(consulta.guardarTurnos(turno)){
-                    if(consulta.agregar_diasturno(consulta.traerid_dia(generarImp.ComboBoxDias.getSelectedItem().toString()), consulta.traerid_turno())){
-                        if(consulta.agregar_iddia_empleado(idempleado)){
-                            setearTxtEnCero();
-                            String idturnosDos = consulta.traerid_turno();
-                            String iddia = consulta.traerIdDiaDelTurno(idturnosDos);
-                       
-                       
-                            consulta.agregar_empleado_turno(idempleado,consulta.traerid_turno(),iddia);
-                       
-                       
-                            JOptionPane.showMessageDialog(null,"TURNO REGISTRADO");
-                          
-                            int sueldoPrimario = parseInt(consulta.calcularSueldo(idempleado)); //SUELDO DEL EMPLEADO QUE USO EN CONTROLADOR EMPLEADO
-                            sueldo=Integer.toString(sueldoPrimario);
-                          
-                            consulta.asignarSueldo(sueldo,idempleado);
-                   }
-               }
-           }
-        
-            
-        } 
-           else{
-               String dia = generarImp.ComboBoxDias.getSelectedItem().toString();
-               JOptionPane.showMessageDialog(null, "YA SE GENERO EL DIA " + dia + " PARA EL EMPLEADO SOLICITADO ", "ERROR AL EFECTUAR PAGO", 0);
-           }
-           } 
-           catch (Exception ex){
-               System.out.println(ex);
-            }      
-        }
-           
-           else {
-              JOptionPane.showMessageDialog(null,"NO INGRESO FECHA, INGERESE FECHA EN EL CALENDARIO","ERROR DE SINTAXYS", 0);
-            }
-       }
-       
-       
-    }*/
+  
     
     public void guardarPago(ActionEvent e){
        
@@ -323,9 +252,11 @@ public class ControladorImporte implements ActionListener{
                 }
                 
                 
-                int sueldoPrimario = parseInt(consulta.calcularSueldo(idempleado)); //SUELDO DEL EMPLEADO QUE USO EN CONTROLADOR EMPLEADO
-                sueldo=Integer.toString(sueldoPrimario);
-                consulta.asignarSueldo(sueldo,idempleado);
+   
+                
+                asignarDescuentoE(idempleado);
+                asignarSubtotalE(idempleado);
+                consulta.asignarSueldo(valueOf(calcularSueldoE()),idempleado);
                 
                 ControladorBarra cb = new ControladorBarra();
                 cb.pgbar();  
@@ -359,6 +290,13 @@ public class ControladorImporte implements ActionListener{
           
     }
     
+    public int calcularSueldoE(){
+         int desT = parseInt(consulta.traerDescE(idempleado));
+         int subT = parseInt(consulta.traerSubtotalesT(idempleado));
+         int sueldo = subT-desT;
+         return sueldo;
+    }
+    
     public void turnos(Turnos turno,String idempleado, Date fecha, String dia1,String dia2, String dia3,String dia4,String diaDesc ){
         
          turno.setTurnoUno(isCero(dia1)?dia1:"0");
@@ -366,7 +304,7 @@ public class ControladorImporte implements ActionListener{
                 turno.setTurnoTres(isCero(dia3)?dia3:"0");
                 turno.setTurnoCuatro(isCero(dia4)?dia4:"0");
                 turno.setDescuento(isCero(diaDesc)?diaDesc:"0");
-                turno.setTotal(valueOf(calcular_subtotal(dia1,dia2,dia3,dia4,diaDesc)));
+                turno.setTotal(valueOf(calcular_subtotal(dia1,dia2,dia3,dia4)));
                 turno.setIdempleado(idempleado);
                 turno.setFecha(fecha);
         
@@ -428,24 +366,42 @@ public class ControladorImporte implements ActionListener{
        
     } 
     
-    public int calcular_subtotal(String txt1, String txt2, String txt3, String txt4,String txtDes){
+    public int calcular_subtotal(String txt1, String txt2, String txt3, String txt4){
         int subtotal =0;
         int subtotal_cajas=0;
         subtotal_cajas+=(isCero(txt1)?parseInt(txt1):0)+
                 (isCero(txt2)?parseInt(txt2):0)+
                 (isCero(txt3)?parseInt(txt3):0)+
                 (isCero(txt4)?parseInt(txt4):0);
-        
-        int descuento = (isCero(txtDes)?parseInt(txtDes):0); 
+   
+    
         if(verficaFilaBlancos(txt1,txt2,txt3,txt4)){
-            subtotal=subtotal_cajas-(descuento*(-1));
+            subtotal=subtotal_cajas;
         }
         else{
-            subtotal=subtotal_cajas-descuento;
+            subtotal=subtotal_cajas;
         }
         return subtotal;        
                      
     }
+    
+    
+    /*metodo que asigna la suma de los descuentos del empleado y se lo asigna
+    al campo descuentos_totales de la tabla empleados*/
+    public void asignarDescuentoE(String idempleado){
+        int descT = 0;
+        descT = parseInt(consulta.calcularDescuentosTotales(idempleado));
+        consulta.asignarDescuentoTotal(valueOf(descT),idempleado);
+    }
+    
+    /*metodo que asigna la suma de los totales de la tabla turno a subtotales_totales
+    de la tabla empleados*/
+    public void asignarSubtotalE(String idempleado){
+        int subT=0;
+        subT=parseInt(consulta.calcularSubtotalesTotales(idempleado));
+        consulta.asignarSubtotalTotal(valueOf(subT), idempleado);
+    }
+    
     
     public void setearTxtEnCero(){
         generarImp.txtt1.setText("");
@@ -500,7 +456,7 @@ public class ControladorImporte implements ActionListener{
                 turnoLunes.setTurnoTres(isCero(pagosE.txt3L.getText())?pagosE.txt3L.getText():"0");
                 turnoLunes.setTurnoCuatro(isCero(pagosE.txt4L.getText())?pagosE.txt4L.getText():"0");
                 turnoLunes.setDescuento(isCero(pagosE.txtLDes.getText())?pagosE.txtLDes.getText():"0");
-                turnoLunes.setTotal(valueOf(calcular_subtotal(pagosE.txt1L.getText(),pagosE.txt2L.getText(),pagosE.txt3L.getText(),pagosE.txt4L.getText(),pagosE.txtLDes.getText())));
+                turnoLunes.setTotal(valueOf(calcular_subtotal(pagosE.txt1L.getText(),pagosE.txt2L.getText(),pagosE.txt3L.getText(),pagosE.txt4L.getText())));
                 turnoLunes.setIdturno(id_turno("Lunes"));
           
             
@@ -511,7 +467,7 @@ public class ControladorImporte implements ActionListener{
                 turnoMartes.setTurnoTres(isCero(pagosE.txt3Ma.getText())?pagosE.txt3Ma.getText():"0");
                 turnoMartes.setTurnoCuatro(isCero(pagosE.txt4Ma.getText())?pagosE.txt4Ma.getText():"0");
                 turnoMartes.setDescuento(isCero(pagosE.txtMaDes.getText())?pagosE.txtMaDes.getText():"0");
-                turnoMartes.setTotal(valueOf(calcular_subtotal(pagosE.txt1Ma.getText(),pagosE.txt2Ma.getText(),pagosE.txt3Ma.getText(),pagosE.txt4Ma.getText(),pagosE.txtMaDes.getText())));
+                turnoMartes.setTotal(valueOf(calcular_subtotal(pagosE.txt1Ma.getText(),pagosE.txt2Ma.getText(),pagosE.txt3Ma.getText(),pagosE.txt4Ma.getText())));
 
                 turnoMartes.setIdturno(id_turno("Martes"));
 
@@ -521,7 +477,7 @@ public class ControladorImporte implements ActionListener{
                 turnoMiercoles.setTurnoTres(isCero(pagosE.txt3Mi.getText())?pagosE.txt3Mi.getText():"0");
                 turnoMiercoles.setTurnoCuatro(isCero(pagosE.txt4Mi.getText())?pagosE.txt4Mi.getText():"0");
                 turnoMiercoles.setDescuento(isCero(pagosE.txtMiDes.getText())?pagosE.txtMiDes.getText():"0");
-                turnoMiercoles.setTotal(valueOf(calcular_subtotal(pagosE.txt1Mi.getText(),pagosE.txt2Mi.getText(),pagosE.txt3Mi.getText(),pagosE.txt4Mi.getText(),pagosE.txtMiDes.getText())));
+                turnoMiercoles.setTotal(valueOf(calcular_subtotal(pagosE.txt1Mi.getText(),pagosE.txt2Mi.getText(),pagosE.txt3Mi.getText(),pagosE.txt4Mi.getText())));
 
                 turnoMiercoles.setIdturno(id_turno("Miercoles"));
 
@@ -531,7 +487,7 @@ public class ControladorImporte implements ActionListener{
                 turnoJueves.setTurnoTres(isCero(pagosE.txt3J.getText())?pagosE.txt3J.getText():"0");
                 turnoJueves.setTurnoCuatro(isCero(pagosE.txt4J.getText())?pagosE.txt4J.getText():"0");
                 turnoJueves.setDescuento(isCero(pagosE.txtJDes.getText())?pagosE.txtJDes.getText():"0");
-                turnoJueves.setTotal(valueOf(calcular_subtotal(pagosE.txt1J.getText(),pagosE.txt2J.getText(),pagosE.txt3J.getText(),pagosE.txt4J.getText(),pagosE.txtJDes.getText())));
+                turnoJueves.setTotal(valueOf(calcular_subtotal(pagosE.txt1J.getText(),pagosE.txt2J.getText(),pagosE.txt3J.getText(),pagosE.txt4J.getText())));
 
                 turnoJueves.setIdturno(id_turno("Jueves"));
 
@@ -542,7 +498,7 @@ public class ControladorImporte implements ActionListener{
                 turnoViernes.setTurnoTres(isCero(pagosE.txt3V.getText())?pagosE.txt3V.getText():"0");
                 turnoViernes.setTurnoCuatro(isCero(pagosE.txt4V.getText())?pagosE.txt4V.getText():"0");
                 turnoViernes.setDescuento(isCero(pagosE.txtVDes.getText())?pagosE.txtVDes.getText():"0");
-                turnoViernes.setTotal(valueOf(calcular_subtotal(pagosE.txt1V.getText(),pagosE.txt2V.getText(),pagosE.txt3V.getText(),pagosE.txt4V.getText(),pagosE.txtVDes.getText())));
+                turnoViernes.setTotal(valueOf(calcular_subtotal(pagosE.txt1V.getText(),pagosE.txt2V.getText(),pagosE.txt3V.getText(),pagosE.txt4V.getText())));
 
                 turnoViernes.setIdturno(id_turno("Viernes"));
 
@@ -552,7 +508,7 @@ public class ControladorImporte implements ActionListener{
                 turnoSabado.setTurnoTres(isCero(pagosE.txt3S.getText())?pagosE.txt3S.getText():"0");
                 turnoSabado.setTurnoCuatro(isCero(pagosE.txt4S.getText())?pagosE.txt4S.getText():"0");
                 turnoSabado.setDescuento(isCero(pagosE.txtSDes.getText())?pagosE.txtSDes.getText():"0");
-                turnoSabado.setTotal(valueOf(calcular_subtotal(pagosE.txt1S.getText(),pagosE.txt2S.getText(),pagosE.txt3S.getText(),pagosE.txt4S.getText(),pagosE.txtSDes.getText())));
+                turnoSabado.setTotal(valueOf(calcular_subtotal(pagosE.txt1S.getText(),pagosE.txt2S.getText(),pagosE.txt3S.getText(),pagosE.txt4S.getText())));
 
                 turnoSabado.setIdturno(id_turno("Sabado"));
 
@@ -564,7 +520,7 @@ public class ControladorImporte implements ActionListener{
                 turnoPremio.setTurnoTres(isCero(pagosE.txt3P.getText())?pagosE.txt3P.getText():"0");
                 turnoPremio.setTurnoCuatro(isCero(pagosE.txt4P.getText())?pagosE.txt4P.getText():"0");
                 turnoPremio.setDescuento(isCero(pagosE.txtPDes.getText())?pagosE.txtPDes.getText():"0");
-                turnoPremio.setTotal(valueOf(calcular_subtotal(pagosE.txt1P.getText(),pagosE.txt2P.getText(),pagosE.txt3P.getText(),pagosE.txt4P.getText(),pagosE.txtPDes.getText())));
+                turnoPremio.setTotal(valueOf(calcular_subtotal(pagosE.txt1P.getText(),pagosE.txt2P.getText(),pagosE.txt3P.getText(),pagosE.txt4P.getText())));
 
                 turnoPremio.setIdturno(id_turno("Extra"));
 
@@ -579,9 +535,11 @@ public class ControladorImporte implements ActionListener{
                         && consulta.editarTurno(turnoPremio)
                         ){
 
-                    int sueldoPrimario = parseInt(consulta.calcularSueldo(idempleado)); //SUELDO DEL EMPLEADO QUE USO EN CONTROLADOR EMPLEADO
-                    sueldo=Integer.toString(sueldoPrimario);
-                    consulta.asignarSueldo(sueldo,idempleado);
+                    //int sueldoPrimario = parseInt(consulta.calcularSueldo(idempleado)); //SUELDO DEL EMPLEADO QUE USO EN CONTROLADOR EMPLEADO
+                    
+                    asignarDescuentoE(idempleado);
+                    asignarSubtotalE(idempleado);
+                    consulta.asignarSueldo(valueOf(calcularSueldoE()),idempleado);
                     //excepcion
                     JOptionPane.showMessageDialog(null, "<html><p style = \"font:20px\"> TURNO MODIFICADO CON EXITO </p></html>");
 

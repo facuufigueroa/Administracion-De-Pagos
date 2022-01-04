@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import com.toedter.calendar.JDateChooser;
 import java.sql.Date;
 
-/**
- *
- * @author Facundo
- */
 public class Turnos {
     private String turnoUno;
     private String turnoDos;
@@ -80,14 +71,7 @@ public class Turnos {
         this.descuento = descuento;
     }
 
-    public String getTotal() {
-        return total;
-    }
-
-    public void setTotal(String total) {
-        this.total = total;
-    }
-
+ 
     public String getIdturno() {
         return idturno;
     }
@@ -118,6 +102,14 @@ public class Turnos {
 
     public void setFecha(String fecha) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
     }
 
     

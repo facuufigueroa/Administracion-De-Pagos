@@ -612,7 +612,7 @@ public class Consultas extends ConexionBD {
                  t.setTurnoCuatro(isCeroFromBD(rs.getString("t4"))?"":rs.getString("t4"));
                  t.setDescuento(isCeroFromBD(rs.getString("descuento"))?"":rs.getString("descuento"));
                  t.setTotal(isCeroFromBD(rs.getString("total"))?"":rs.getString("total"));
-                
+
             }
 
         } catch (Exception e) {
@@ -882,7 +882,32 @@ public class Consultas extends ConexionBD {
         return sueldo;
     }
     
+    public String calcularDescuentosTotales(String idempleado){
+        PreparedStatement ps = null;
+        Connection con = getConnection();
+        Statement st;
+        String descTotal = null;
+      
+        try {
+            
+            String sql = "SELECT SUM(descuento) FROM turno WHERE idempleado = '"+ idempleado + "'";
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                descTotal = rs.getString(1).toString();
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return descTotal;
+    }
     
+    
+      
     public void asignarSueldo(String sueldo, String idempleado){
         PreparedStatement ps = null;
         Connection conn = getConnection();
@@ -908,6 +933,136 @@ public class Consultas extends ConexionBD {
 
         }
     }
+    
+    public void asignarDescuentoTotal(String descTotal, String idempleado){
+       
+        PreparedStatement ps = null;
+        Connection conn = getConnection();
+        String sql = "UPDATE empleados SET descuentos_totales = ? WHERE idempleado = ? ";
+     
+        try {
+            ps = conn.prepareStatement(sql);
+            
+            ps.setString(1, descTotal);
+            ps.setString(2, idempleado);
+            
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.err.println(e);
+           
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+
+        }
+    
+    }
+    
+    public void asignarSubtotalTotal(String subtotalTotal, String idempleado){
+        PreparedStatement ps = null;
+        Connection conn = getConnection();
+        String sql = "UPDATE empleados SET subtotales_totales = ? WHERE idempleado = ? ";
+     
+        try {
+            ps = conn.prepareStatement(sql);
+            
+            ps.setString(1, subtotalTotal);
+            ps.setString(2, idempleado);
+            
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.err.println(e);
+           
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+
+        }
+    }
+    
+    
+    public String calcularSubtotalesTotales(String idempleado){
+        PreparedStatement ps = null;
+        Connection con = getConnection();
+        Statement st;
+        String subT = null;
+      
+        try {
+            
+            String sql = "SELECT SUM(total) FROM turno WHERE idempleado = '"+ idempleado + "'";
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                subT = rs.getString(1).toString();
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return subT;
+    }
+    
+    //GET del descuento total del empleado
+    public String traerDescE(String idempleado){
+        PreparedStatement ps = null;
+        Connection con = getConnection();
+        Statement st;
+        String descT = null;
+      
+        try {
+            
+            String sql = "SELECT descuentos_totales FROM empleados WHERE idempleado = '"+ idempleado + "'";
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                descT = rs.getString(1).toString();
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return descT;
+    }
+    
+    public String traerSubtotalesT(String idempleado){
+        PreparedStatement ps = null;
+        Connection con = getConnection();
+        Statement st;
+        String subT = null;
+      
+        try {
+            
+            String sql = "SELECT subtotales_totales FROM empleados WHERE idempleado = '"+ idempleado + "'";
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                subT = rs.getString(1).toString();
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return subT;
+    }
+    
+    
     
     public boolean validarFilaBlanco(String t1,String t2, String t3,String t4){
         return t1.isEmpty() 

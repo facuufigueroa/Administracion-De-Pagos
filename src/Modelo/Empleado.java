@@ -15,7 +15,8 @@ public class Empleado {
     public String dni;
     public String id;
     public String sueldo;
-    
+    public String descuentos_totales;
+    public String subtotales_totales;
     
 
     //Constructor
@@ -40,6 +41,29 @@ public class Empleado {
     public Empleado(){
         
     }
+
+    public Empleado(String descuentos_totales, String subtotales_totales) {
+        this.descuentos_totales = descuentos_totales;
+        this.subtotales_totales = subtotales_totales;
+    }
+
+    public String getDescuentos_totales() {
+        return descuentos_totales;
+    }
+
+    public void setDescuentos_totales(String descuentos_totales) {
+        this.descuentos_totales = descuentos_totales;
+    }
+
+    public String getSubtotales_totales() {
+        return subtotales_totales;
+    }
+
+    public void setSubtotales_totales(String subtotales_totales) {
+        this.subtotales_totales = subtotales_totales;
+    }
+    
+    
 
     public String getSueldo() {
         return sueldo;
