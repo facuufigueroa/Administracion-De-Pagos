@@ -13,6 +13,7 @@ import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 import static jdk.nashorn.internal.objects.Global.print;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -49,17 +50,24 @@ public class GuardarReportDirecto {
         String reportPath = "/src/Reporte/emp.jasper";
         
         try
-        {
+        {   
+      
           //se carga el reporte
            URL  in=this.getClass().getResource( "/Reporte/emp.jasper" );
            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(in);
           
            jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), conn );
 
-           JasperExportManager.exportReportToPdfFile( jasperPrint, "C:/Users/Dell/"+nombreReporte()+".pdf");
+
+           JasperExportManager.exportReportToPdfFile( jasperPrint, "C:/Users/Dell/Desktop/Reporte/"+nombreReporte()+".pdf");
+           
+           
+         
         }
         catch (JRException ex)
         {
+          JOptionPane.showMessageDialog(null,"<html><p style = \"font:20px\"> SE ELIMINO LA CARPETA DONDE SE ALMACENABAN LOS REPORTES" +
+                  " CONTACTASE CON EL TECNICO </p></html>","ERROR DE SINTAXYS", 0);
           System.err.println( "Error iReport: " + ex.getMessage() );
         }
   }

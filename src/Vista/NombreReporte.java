@@ -110,7 +110,7 @@ public class NombreReporte extends javax.swing.JFrame {
         GuardarReportDirecto rep = new GuardarReportDirecto(this);
         rep.pdf();
         JOptionPane.showMessageDialog(null,"<html><p style = \"font:20px\"> REPORTE GUARDADO </p></html>","REPORTES", 1);
-
+        this.setVisible(false);
     }//GEN-LAST:event_btnOkActionPerformed
 
 /**
