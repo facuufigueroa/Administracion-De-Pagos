@@ -30,27 +30,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel3" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnSeleccionar" min="-2" pref="183" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                          </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jPanel2" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSeleccionar" min="-2" pref="183" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,13 +54,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="524" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="btnSeleccionar" min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -108,108 +102,89 @@
                               <Component id="checkLunes" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                  <Component id="txt1L" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <EmptySpace pref="152" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="txt1L" min="-2" pref="95" max="-2" attributes="0"/>
-                                          <EmptySpace pref="171" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txt3L" min="-2" pref="95" max="-2" attributes="0"/>
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txt3Ma" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txt3Mi" min="-2" pref="95" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txt4L" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txt4Ma" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txt4Mi" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txt4J" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txt4V" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txt4S" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txt4P" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txtLDes" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txtMaDes" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txtMiDes" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txtJDes" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txtVDes" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txtSDes" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txtPDes" min="-2" pref="95" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                      </Group>
+                                      <Component id="txt3L" min="-2" pref="95" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txt3Ma" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="txt3Mi" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="txt3P" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txt4L" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="txt4Ma" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="txt4Mi" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="txt4J" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="txt4V" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="txt4S" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="txt4P" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Component id="txt2V" min="-2" pref="95" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="txt1S" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txt1P" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txt3P" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <Component id="txt3S" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="txt1J" min="-2" pref="95" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="txt2J" min="-2" pref="95" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                  <Component id="txt3J" min="-2" pref="95" max="-2" attributes="0"/>
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Component id="txt1V" min="-2" pref="95" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                                  <Component id="txt2V" min="-2" pref="95" max="-2" attributes="0"/>
-                                                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                                                      <Group type="102" alignment="0" attributes="0">
-                                                                          <Component id="txt1J" min="-2" pref="95" max="-2" attributes="0"/>
-                                                                          <EmptySpace max="32767" attributes="0"/>
-                                                                          <Component id="txt2J" min="-2" pref="95" max="-2" attributes="0"/>
-                                                                      </Group>
-                                                                      <Group type="102" alignment="0" attributes="0">
-                                                                          <Component id="txt1Mi" min="-2" pref="95" max="-2" attributes="0"/>
-                                                                          <EmptySpace max="32767" attributes="0"/>
-                                                                          <Component id="txt2Mi" min="-2" pref="95" max="-2" attributes="0"/>
-                                                                      </Group>
-                                                                      <Group type="102" alignment="0" attributes="0">
-                                                                          <Component id="txt1Ma" min="-2" pref="95" max="-2" attributes="0"/>
-                                                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                                              <Component id="txt2L" min="-2" pref="95" max="-2" attributes="0"/>
-                                                                              <Component id="txt2Ma" min="-2" pref="95" max="-2" attributes="0"/>
-                                                                          </Group>
-                                                                      </Group>
-                                                                  </Group>
-                                                                  <Component id="txt2S" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
-                                                                  <Component id="txt2P" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                      <Component id="txt3V" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="txt1Mi" min="-2" pref="95" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="txt2Mi" min="-2" pref="95" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="txt1Ma" min="-2" pref="95" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="txt2L" min="-2" pref="95" max="-2" attributes="0"/>
+                                                      <Component id="txt2Ma" min="-2" pref="95" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="txt2S" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                          <Component id="txt2P" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="txt1V" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txt1S" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txt1P" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txt3J" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txt3V" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txt3S" min="-2" pref="95" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtLDes" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txtMaDes" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txtMiDes" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txtJDes" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txtVDes" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txtSDes" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txtPDes" min="-2" pref="95" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -217,93 +192,98 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt1J" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt2J" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt3J" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt4J" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txtJDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="checkJueves" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtVDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt4V" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt3V" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt2V" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt1V" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="checkViernes" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt1P" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt2P" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt3P" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt4P" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txtPDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="checkPremio" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="33" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="489" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt1J" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="txt2J" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="txt3J" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="txt4J" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="checkJueves" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtJDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt4V" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="txt3V" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="txt2V" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="txt1V" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="checkViernes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtVDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt1P" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="txt2P" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="txt4P" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="checkPremio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtPDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="txt3P" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="txt3L" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <Component id="txt4L" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <Component id="txtLDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                  <Component id="txt3L" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                                  <Component id="txt4L" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                                  <Component id="txtLDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="txt1Ma" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                                      <Component id="txt2Ma" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                                      <Component id="txt4Ma" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                                      <Component id="txt3Ma" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                                      <Component id="checkMartes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="txtMaDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txt1Ma" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                              <Component id="txt2Ma" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                              <Component id="txt4Ma" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                              <Component id="txt3Ma" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                              <Component id="txtMaDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                              <Component id="checkMartes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txt4Mi" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                              <Component id="txt3Mi" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                              <Component id="txt2Mi" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                              <Component id="txt1Mi" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                              <Component id="checkMiercoles" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtMiDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="txt1S" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                              <Component id="txt2S" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                              <Component id="txt3S" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                              <Component id="txt4S" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                              <Component id="checkSabado" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtSDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txt1L" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                          <Component id="checkLunes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt2L" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtMiDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="txt4Mi" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="txt3Mi" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="txt2Mi" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="txt1Mi" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="checkMiercoles" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txt1S" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="txt2S" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="txt3S" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="txt4S" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="txtSDes" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="checkSabado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txt1L" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Component id="checkLunes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt2L" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <EmptySpace pref="10" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -809,33 +789,32 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  <Component id="btnVerPagos" min="-2" pref="212" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
                   <Component id="btnModificar" min="-2" pref="205" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnVerTotal" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="txtTotal" min="-2" pref="129" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="btnGuardar" min="-2" pref="171" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtTotal" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="btnModificar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="btnVerPagos" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="btnVerTotal" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="txtTotal" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="btnGuardar" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="btnModificar" min="-2" pref="45" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -885,6 +864,20 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="btnVerPagos">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/verPago.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="VER PAGOS"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerPagosActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel3">
@@ -924,7 +917,6 @@
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtEmpleado" alignment="3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>

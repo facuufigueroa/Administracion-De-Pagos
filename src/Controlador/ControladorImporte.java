@@ -5,6 +5,7 @@ import Modelo.ConexionBD;
 import Modelo.Consultas;
 import Modelo.Empleado;
 import Modelo.Turnos;
+import Reporte.VerPagos;
 import Vista.BarraProgreso;
 import Vista.BarraProgresoGuardar;
 import Vista.GenerarImporte;
@@ -17,6 +18,7 @@ import static java.lang.String.valueOf;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -100,6 +102,7 @@ public class ControladorImporte implements ActionListener{
         pagosE.btnModificar.addActionListener(this);
         pagosE.btnVerTotal.addActionListener(this);
         pagosE.btnSeleccionar.addActionListener(this);
+        pagosE.btnVerPagos.addActionListener(this);
         iniciarTable();
     }
             
@@ -118,12 +121,22 @@ public class ControladorImporte implements ActionListener{
       guardarPago(e);
       modificarPago(e);
       traerPagos(e);
+      verPagos(e);
     }
     
   
     
     public void iniciarTable() {
-        modelo = new DefaultTableModel();
+        modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int fila, int columna){
+                if(columna == 1){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+        };
         modelo.addColumn("NOMBRE Y APELLIDO");
         pagosE.getTablePagarEmpleados().setRowHeight(30);
         pagosE.getTablePagarEmpleados().setModel(modelo);
@@ -749,6 +762,7 @@ public class ControladorImporte implements ActionListener{
     
     public void traerPagos(ActionEvent e){
         if(e.getSource() == pagosE.btnSeleccionar){
+           pagosE.txtTotal.setText("");
            int fila = pagosE.getTablePagarEmpleados().getSelectedRow();
         
            if (fila >= 0) {
@@ -809,7 +823,19 @@ public class ControladorImporte implements ActionListener{
     }
     
   
-    
+    public void verPagos(ActionEvent e){
+        if (e.getSource() == pagosE.btnVerPagos){
+            try {
+                consulta.guardarMensualidad();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            VerPagos reporte = new VerPagos();
+
+            reporte.conexionReporte();
+           
+        }
+    }
     
     
     

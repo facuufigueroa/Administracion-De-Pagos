@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="961b5e3e-6a27-45da-bc89-ca6dd4e02e1d">
-	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="115"/>
-	<property name="ireport.y" value="72"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\facuu\\Desktop\\proyectoargentino-main\\src\\reporte\\"]]></defaultValueExpression>
 	</parameter>
@@ -11,7 +11,6 @@
      empleados.`idempleado`,
      empleados.`nombre`,
      empleados.`nombre`,
-     empleados.`sueldo`,
      empleados.`idempleado`,
      mensualidad.`totalmensual` AS mensualidad_totalmensual
 FROM
@@ -22,9 +21,6 @@ FROM
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nombre" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="sueldo" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="mensualidad_totalmensual" class="java.lang.Integer"/>
@@ -56,44 +52,23 @@ FROM
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="155" splitType="Stretch">
+		<band height="230" splitType="Stretch">
 			<textField>
-				<reportElement x="98" y="10" width="207" height="20" uuid="3caad065-6dbd-4a12-87d3-855988b07553"/>
+				<reportElement x="98" y="50" width="207" height="20" uuid="3caad065-6dbd-4a12-87d3-855988b07553"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="16" y="10" width="72" height="20" uuid="9021e298-c2ff-4105-af56-f3a071220d9d"/>
+				<reportElement x="26" y="50" width="72" height="20" uuid="9021e298-c2ff-4105-af56-f3a071220d9d"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[EMPLEADO:]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="409" y="10" width="45" height="20" uuid="c5f5beae-9007-48bd-a1ca-34054f1e16c7"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TOTAL:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="454" y="10" width="18" height="20" uuid="051c9fd8-274e-42e6-b2bd-5865fc0fa6d6"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[$]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="472" y="10" width="83" height="20" uuid="1eb7e66e-88f9-4425-967a-3ffdca0fd231"/>
-				<textElement>
-					<font fontName="Arial" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{sueldo}]]></textFieldExpression>
-			</textField>
 			<subreport isUsingCache="true">
-				<reportElement x="0" y="0" width="555" height="126" uuid="a2d63649-395f-4c0d-b658-0178b001597c"/>
+				<reportElement x="0" y="50" width="555" height="92" uuid="a2d63649-395f-4c0d-b658-0178b001597c"/>
 				<subreportParameter name="id_Pempleado">
 					<subreportParameterExpression><![CDATA[$F{idempleado}]]></subreportParameterExpression>
 				</subreportParameter>

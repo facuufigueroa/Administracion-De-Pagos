@@ -59,7 +59,7 @@ public class GuardarReportDirecto {
            jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), conn );
 
 
-           JasperExportManager.exportReportToPdfFile( jasperPrint, "C:/Users/Dell/Desktop/Reporte/"+nombreReporte()+".pdf");
+           JasperExportManager.exportReportToPdfFile( jasperPrint, "C:/Users/Matadero-PC/Desktop/PAGOS MATADERO PARA IMPRIMIR/"+nombreReporte()+".pdf");
            
            
          

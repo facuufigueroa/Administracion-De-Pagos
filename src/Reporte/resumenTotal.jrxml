@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0aa45f29-b03f-4e4e-a3ae-bac31ec3d546">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     empleados.`nombre` AS empleados_nombre,
+     empleados.`sueldo` AS empleados_sueldo,
+     mensualidad.`totalmensual` AS mensualidad_totalmensual
+FROM
+     `empleados` empleados,
+     `mensualidad` mensualidad]]>
+	</queryString>
+	<field name="empleados_nombre" class="java.lang.String"/>
+	<field name="empleados_sueldo" class="java.lang.Integer"/>
+	<field name="mensualidad_totalmensual" class="java.lang.Integer"/>
+	<title>
+		<band height="78" splitType="Stretch">
+			<staticText>
+				<reportElement x="234" y="0" width="126" height="34" uuid="57e3c78e-d416-4101-85c0-1d6b672dd163"/>
+				<textElement>
+					<font fontName="Arial" size="20" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="34" width="319" height="34" uuid="32980b0c-cc3c-464a-bb34-25c22d470dfa"/>
+				<textElement>
+					<font fontName="Arial" size="20" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL SEMANAL A PAGAR]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="33" y="0" width="186" height="20" uuid="b6ab1394-0238-4353-97ec-a97eea9685a5"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empleados_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="100" height="20" uuid="9c27e997-7034-41b6-8c9a-e3bb70a951b6"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empleados_sueldo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="233" y="0" width="1" height="20" uuid="a5da1cc4-418e-4008-9f27-7f260ce37264"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="370" height="1" uuid="0fdea22d-6df5-485d-ad06-15b352a27455"/>
+			</line>
+			<staticText>
+				<reportElement x="234" y="1" width="36" height="19" uuid="2b1131db-a53c-49c6-8c3a-60d94dff94f0"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<line>
+				<reportElement x="370" y="1" width="1" height="19" uuid="63ad8762-7ff5-43cf-8259-a5178a17ee9c"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="20" uuid="3c57ad2d-14ea-41b4-a089-9c1ed80c82c4"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="65" splitType="Stretch">
+			<textField>
+				<reportElement x="270" y="0" width="99" height="20" uuid="6a1577a9-dd53-495d-9ff3-bd79bb39e4af"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mensualidad_totalmensual}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="1" width="123" height="20" uuid="23ea14a2-4d57-4ca7-9cf2-5158f163380b"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL A PAGAR]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="370" height="1" uuid="d98c652d-3762-427e-9759-8b0363c7eb82"/>
+			</line>
+			<line>
+				<reportElement x="1" y="21" width="369" height="1" uuid="884e6892-5080-4417-9e17-9be3ef27f44e"/>
+			</line>
+			<line>
+				<reportElement x="370" y="0" width="1" height="21" uuid="3c2d11bf-60e5-4d8d-bc90-ef3bbd19f524"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="20" uuid="b5b383ac-3916-42f1-adde-812812fe1474"/>
+			</line>
+			<staticText>
+				<reportElement x="233" y="2" width="36" height="18" uuid="b068881f-9029-4171-8c58-6788f2918e91"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<line>
+				<reportElement x="233" y="1" width="1" height="21" uuid="3e30d26a-082d-406a-9fbe-d6fb848c45ac"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

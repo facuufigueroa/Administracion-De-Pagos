@@ -1,0 +1,7 @@
+root
+mataderobragado
+
+---pasos--
+>>create database mataderobragado;
+>>use mataderobragado;
+>> \. bdd

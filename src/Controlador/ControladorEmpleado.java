@@ -8,6 +8,7 @@ import Modelo.Empleado;
 import Modelo.Turnos;
 import Reporte.GuardarReportDirecto;
 import Reporte.Reporte;
+import Reporte.ReporteTotal;
 import Reporte.VerPagos;
 import Vista.BuscarModificar;
 import Vista.GenerarImporte;
@@ -71,24 +72,33 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
         this.registrarE.txtBuscarF.addKeyListener(this);
         this.registrarE.btnVerPagos.addActionListener(this);
         this.registrarE.exportPdf.addActionListener(this);
-      
+        this.registrarE.btnTotalSemanal.addActionListener(this);
       
         iniciarJTable();
 
     }
 
     public void iniciarJTable() {
-        modelo = new DefaultTableModel();
+        modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int fila, int columna){
+                if(columna == 1 && columna == 2 && columna == 3){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+        };
         modelo.addColumn("DNI");
         modelo.addColumn("NOMBRE Y APELLIDO");
         modelo.addColumn("TELEFONO");
         //modelo.addColumn("ID");
-      
+        
         registrarE.getTablaEmpleado().setRowHeight(30);
         registrarE.getTablaEmpleado().setModel(modelo);
         importarDatos(modelo);
     }
-
+    
     public void iniciar() {
         registrarE.setTitle("EMPLEADO");
         registrarE.setLocationRelativeTo(null);
@@ -109,6 +119,7 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
        
        // abrirGenerarPagoPrueba(e);
         abrir_generarPago(e);
+        detalleTotalSemanal(e);
      
         try {
             nuevaSemana(e);
@@ -521,7 +532,17 @@ public class ControladorEmpleado implements ActionListener, KeyListener {
     }
     
     
-    
+    public void detalleTotalSemanal(ActionEvent e){
+        if(e.getSource() == registrarE.btnTotalSemanal){
+            try {
+                consulta.guardarMensualidad();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ReporteTotal repTotal = new ReporteTotal();
+            repTotal.conexionReporteTotal();
+        }
+    }
     
     
     
